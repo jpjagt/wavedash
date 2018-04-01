@@ -7,9 +7,30 @@ html, body {
   background: #000;
 }
 
-h1 {
+h1, h2, h3, h4, h5, p, span, ul, li {
   color: #fff;
   font-family: $sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+
+  font-family: $sans-serif;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .flex {
