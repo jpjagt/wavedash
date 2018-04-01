@@ -1,0 +1,42 @@
+.grid {
+  margin-left: auto;
+  margin-right: auto;
+
+  &:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+@media (min-width: 800px) {
+  .grid {
+    width: 750px;
+  }
+}
+@media (min-width: 1000px) {
+  .grid {
+    width: 800px;
+  }
+}
+@media (min-width: 1200px) {
+  .grid {
+    width: 900px;
+  }
+}
+
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-6 {
+  float: left;
+  padding: 5px;
+}
+
+.col-1 { width: calc(100% / 12 *  1); }
+.col-2 { width: calc(100% / 12 *  2); }
+.col-3 { width: calc(100% / 12 *  3); }
+.col-4 { width: calc(100% / 12 *  4); }
+.col-6 { width: calc(100% / 12 *  6); }
