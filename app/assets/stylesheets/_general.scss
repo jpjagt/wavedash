@@ -38,6 +38,10 @@ ul {
   list-style: none;
 }
 
+div {
+  box-sizing: border-box;
+}
+
 .flex {
   display: flex
 }
@@ -52,4 +56,15 @@ ul {
 
 .no-margin {
   margin: 0;
+}
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+
+.bold {
+  font-weight: bold;
 }
