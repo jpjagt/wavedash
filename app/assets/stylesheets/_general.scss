@@ -7,7 +7,12 @@ html, body {
   background: #000;
 }
 
-h1, h2, h3, h4, h5, p, span, ul, li {
+h1, h2, h3, h4, h5 {
+  color: #fff;
+  font-family: $header;
+}
+
+p, span, ul, li {
   color: #fff;
   font-family: $sans-serif;
 }
