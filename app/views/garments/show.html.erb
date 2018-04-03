@@ -1,0 +1,9 @@
+<div class="flex flex-center">
+  <h1><%= @garment.name %></h1>
+</div>
+
+<div class="container">
+  <% @garment.images.each do |image| %>
+    <%= image_tag image.src, width: '100%', height: 'auto' %>
+  <% end %>
+</div>

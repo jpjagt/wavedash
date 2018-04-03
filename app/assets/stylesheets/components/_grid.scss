@@ -1,4 +1,4 @@
-.grid {
+.container {
   margin-left: auto;
   margin-right: auto;
 
@@ -21,7 +21,7 @@
 .col-xs-6 { @include col; width: calc(100% / 12 *  6); }
 
 @media (min-width: $screen-sm) {
-  .grid {
+  .container {
     width: 630px;
   }
 
@@ -32,7 +32,7 @@
   .col-sm-6 { @include col; width: calc(100% / 12 *  6); }
 }
 @media (min-width: $screen-md) {
-  .grid {
+  .container {
     width: 750px;
   }
 
@@ -43,7 +43,7 @@
   .col-md-6 { @include col; width: calc(100% / 12 *  6); }
 }
 @media (min-width: $screen-lg) {
-  .grid {
+  .container {
     width: 900px;
   }
 
