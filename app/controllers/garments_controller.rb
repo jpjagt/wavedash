@@ -7,6 +7,6 @@ class GarmentsController < ApplicationController
   private
 
   def set_garment
-    @garment = Garment.find_by(name: params['name'])
+    @garment = Garment.find_by_path(params['path'])
   end
 end
