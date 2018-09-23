@@ -1,6 +1,18 @@
 <div class="flex flex-center full-height">
-  <div class="home">
-    <h1 class="no-margin">wavedash</h1>
-    <%= render 'categories/list', categories: @categories %>
+  <div id="column">
+    <div id="envelope">
+      <div id="postcard">
+        <h1 id="title" class="no-margin">wavedash</h1>
+
+        <%= render 'categories/list', categories: @categories %>
+
+        <ul class="footnote">
+          <li><a href="cart">cart</a></li>
+          <li><a href="contact">contact</a></li>
+        </ul>
+
+        <%= image_tag 'rose.jpg', class: 'rose' %>
+      </div>
+    </div>
   </div>
 </div>

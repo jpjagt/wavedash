@@ -6,7 +6,11 @@
 
   width: 100%;
 
-  background: #000;
+  background: $black;
 
   text-align: center;
+
+  span {
+    display: inline-block;
+  }
 }
