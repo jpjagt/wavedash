@@ -2,12 +2,12 @@
 //= require_tree .
 
 
-const hovercards = document.querySelectorAll('.hovercard');
-const body = document.querySelector('body');
+var hovercards = document.querySelectorAll('.hovercard');
+var body = document.querySelector('body');
 
-hovercards.forEach((elem) => {
+hovercards.forEach(function(elem) {
   elem.addEventListener("mouseenter", function(event) {
-    const img = event.target.dataset.img;
+    var img = event.target.dataset.img;
     body.style.backgroundImage = `url('${img}')`;
   });
   elem.addEventListener("mouseleave", function(event) {
