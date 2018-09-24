@@ -1,0 +1,9 @@
+<% postcard_classes ||= "" %>
+
+<div id="column">
+  <div id="envelope">
+    <div id="postcard" class="<%= postcard_classes %>">
+      <%= yield %>
+    </div>
+  </div>
+</div>

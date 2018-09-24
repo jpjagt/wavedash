@@ -1,18 +1,14 @@
 <div class="flex flex-center full-height">
-  <div id="column">
-    <div id="envelope">
-      <div id="postcard">
-        <h1 id="title" class="no-margin">wavedash</h1>
+  <%= render 'shared/postcard' do %>
+    <h1 class="wavedash" id="title">wavedash</h1>
 
-        <%= render 'categories/list', categories: @categories %>
+    <%= render 'categories/list', categories: @categories %>
 
-        <ul class="footnote">
-          <li><a href="cart">cart</a></li>
-          <li><a href="contact">contact</a></li>
-        </ul>
+    <ul class="footnote">
+      <li><%= link_to "cart", cart_path %></li>
+      <li><%= link_to "contact", "#" %></li>
+    </ul>
 
-        <%= image_tag 'rose.jpg', class: 'rose' %>
-      </div>
-    </div>
-  </div>
+    <%= image_tag 'rose.jpg', class: 'rose' %>
+  <% end %>
 </div>

@@ -1,11 +1,9 @@
-<div class="flex flex-center">
-  <h1>our <%= @category.name %></h1>
-</div>
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard' do %>
+    <h1>our <%= @category.name %></h1>
 
-<div class="container">
-  <% @category.garments.each do |garment| %>
-    <div class="col-xs-6 col-sm-4">
+    <% @category.garments.each do |garment| %>
       <%= render 'garments/card', garment: garment %>
-    </div>
+    <% end %>
   <% end %>
 </div>

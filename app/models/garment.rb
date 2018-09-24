@@ -3,6 +3,10 @@ class Garment < ApplicationRecord
 
   has_many :images
 
+  def price
+    ActionController::Base.helpers.number_to_currency(self.euros + (self.cents / 100.0))
+  end
+
   def path
     self.name.parameterize
   end

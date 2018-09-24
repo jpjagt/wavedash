@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
     @hide_navbar = true
   end
+
+  def cart
+  end
 end

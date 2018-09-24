@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(version: 20180401141128) do
   create_table "garments", force: :cascade do |t|
     t.string "name", default: ""
     t.text "description", default: ""
-    t.float "price", default: 0.0
+    t.integer "euros", default: 0
+    t.integer "cents", default: 0
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

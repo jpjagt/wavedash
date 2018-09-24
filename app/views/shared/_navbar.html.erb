@@ -1,6 +1,6 @@
 <% unless @hide_navbar %>
   <div class="navbar">
-    <p><%= link_to "< home", root_path %> | wavedash</p>
+    <p><%= link_to "wavedash", root_path, class: 'wavedash' %></p>
     <p class="navbar-right">
       <% Category.all.each do |category| %>
         <% if category == @category %>
@@ -10,6 +10,6 @@
         <% end %>
       <% end %>
 
-      <%= link_to "cart", "#" %></p>
+      <%= link_to "cart", cart_path %></p>
   </div>
 <% end %>

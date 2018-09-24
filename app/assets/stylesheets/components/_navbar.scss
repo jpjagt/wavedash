@@ -4,11 +4,13 @@
   left: 0;
   right: 0;
 
-  padding: 0 15px;
+  background: $white;
+
+  padding: 5px 15px;
 
   .navbar-right {
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 15px;
   }
 }

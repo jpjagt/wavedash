@@ -1,4 +1,9 @@
-<%= link_to get_garment_path(garment) do %>
-  <%= image_tag garment.image, width: '100%', height: '100%' %>
-  <p><%= garment.name %></p>
+<%= link_to get_garment_path(garment), class: 'garment-card col-xs-12 col-sm-4 hovercard', data: { img: image_url(garment.image) } do %>
+  <div class="col-xs-6 col-sm-12">
+    <p class="name"><%= garment.name %></p>
+    <p><%= garment.price %></p>
+  </div>
+  <div class="col-xs-6 hidden-sm">
+    <%= image_tag garment.image, class: 'full-height full-width' %>
+  </div>
 <% end %>

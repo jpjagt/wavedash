@@ -1,0 +1,24 @@
+.garment-card {
+  margin: 3px;
+  border: 1px solid transparent;
+  padding: 3px;
+
+  .name {
+    text-decoration: underline;
+  }
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+
+    .name {
+      text-decoration: none;
+    }
+  }
+
+  &, .col-xs-12, img {
+    height: 40px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+}

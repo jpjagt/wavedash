@@ -9,5 +9,10 @@ $green: #32B796;
 $gray: #000000;
 $light-gray: #F4F4F4;
 
-$white: #fff;
-$black: #000;
+<% if @reverse_colors %>
+  $white: #000;
+  $black: #fff;
+<% else %>
+  $white: #fff;
+  $black: #000;
+<% end %>
