@@ -5,8 +5,8 @@
     <%= render 'categories/list', categories: @categories %>
 
     <ul class="footnote">
-      <li><%= link_to "cart", cart_path, class: 'line' %></li>
-      <li><%= link_to "contact", "#", class: 'line' %></li>
+      <li><%= line_to "cart", cart_path %></li>
+      <li><%= line_to "contact", "#" %></li>
     </ul>
 
     <%= image_tag 'rose.jpg', class: 'rose' %>

@@ -1,5 +1,5 @@
 <ul class="categories">
   <% categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category.name), class: 'line' %></li>
+    <li><%= line_to category.name, category_path(category.name) %></li>
   <% end %>
 </ul>
