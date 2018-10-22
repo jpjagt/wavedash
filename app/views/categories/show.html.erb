@@ -1,9 +1,18 @@
-<div class="flex flex-center full-height">
-  <%= render 'shared/postcard' do %>
-    <h1>our <%= @category.name %></h1>
+<!-- <div class="flex flex-center full-height">
+  <%# render 'shared/postcard' do %>
+    <h1>our <%# @category.name %></h1>
 
-    <% @category.garments.each do |garment| %>
-      <%= render 'garments/card', garment: garment %>
-    <% end %>
+    <%# @category.garments.each do |garment| %>
+      <%# render 'garments/card', garment: garment %>
+    <%# end %>
+  <%# end %>
+</div>
+ -->
+
+<div class="flex flex-center full-height">
+  <h1>our <%= @category.name %></h1>
+
+  <% @category.garments.each do |garment| %>
+    <%= image_tag garment.thumbnail %>
   <% end %>
 </div>

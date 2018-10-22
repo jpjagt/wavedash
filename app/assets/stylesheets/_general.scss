@@ -17,7 +17,7 @@ body {
   background: rgba(255, 255, 255, 0.99);
   background: $white;
 
-  background-size: 300px 300px;
+  background-size: auto 300px;
   background-repeat: repeat;
   background-position: center;
 }
@@ -100,4 +100,16 @@ div {
 }
 .text-right {
   text-align: right;
+}
+
+.clouds {
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url('https://images.unsplash.com/photo-1496450681664-3df85efbd29f?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

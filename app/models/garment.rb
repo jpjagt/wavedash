@@ -15,7 +15,7 @@ class Garment < ApplicationRecord
     self.find_by(name: path.gsub(/-/, ' '))
   end
 
-  def image
+  def thumbnail
     images.first&.src || ""
   end
 end
