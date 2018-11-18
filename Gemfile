@@ -13,7 +13,7 @@ gem 'sass-rails'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'simple_form'
 gem 'uglifier'
-gem 'webpacker'
+gem 'webpacker', '~> 3.5'
 
 gem 'turbolinks', '~> 5.2.0'
 

@@ -1,4 +1,11 @@
-<%= link_to get_garment_path(garment), class: 'garment-card col-xs-12 col-sm-4 hovercard', data: { img: image_url(garment.thumbnail) } do %>
+<%=
+  link_to get_garment_path(garment),
+  class: 'garment-card col-xs-12 col-sm-4 hovercard',
+  data: {
+    controller: "garmentcard",
+    img: image_url(garment.thumbnail),
+    action: "mouseover->garmentcard#display mouseout->garmentcard#hide"
+  } do %>
   <div class="col-xs-6 col-sm-12">
     <p class="name"><%= garment.name %></p>
     <p><%= garment.price %></p>

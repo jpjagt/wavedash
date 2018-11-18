@@ -1,10 +1,14 @@
 {
   "name": "wavedash",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:JeroenPJ/wavedash.git",
+  "author": "Jeroen Jagt <jeroenpjagt@gmail.com>",
+  "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.4.1",
-    "bootstrap": "3",
-    "jquery": "^3.3.1"
+    "@rails/webpacker": "3.5",
+    "stimulus": "^1.1.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
