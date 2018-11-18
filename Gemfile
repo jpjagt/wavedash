@@ -1,22 +1,25 @@
 source 'https://rubygems.org'
-ruby '2.4.3'
+ruby '2.4.4'
 
-gem 'figaro'
+gem 'bootsnap'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
-gem 'rails', '5.1.4'
+gem 'rails', '5.2.1'
 gem 'redis'
 
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass', '~> 4.7'
 gem 'sass-rails'
+gem 'font-awesome-sass', '~> 5.0.9'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'turbolinks', '~> 5.2.0'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'rails_real_favicon'
 end
 
 group :development, :test do
