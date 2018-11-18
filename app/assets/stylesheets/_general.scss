@@ -25,6 +25,9 @@ body {
 h1, h2, h3, h4, h5 {
   color: $black;
   font-family: $header;
+
+  margin-top: 0;
+  line-height: 1;
 }
 
 p, span, ul, li {
@@ -115,5 +118,6 @@ div {
 }
 
 .turbolinks-progress-bar {
-  visibility: hidden;
+  transform: skewX(-45deg);
+  background: $black;
 }

@@ -1,16 +1,22 @@
 <% content_for(:title) do %><%= @garment.name %> ~ <%= @garment.category.name %><% end %>
 
-<div class="flex flex-center">
-  <h1><%= @garment.name %></h1>
-</div>
-
 <div class="container">
   <div class="header">
     <div class="col-12 col-sm-6">
+      <h1><%= @garment.name %></h1>
       <p><%= @garment.description %></p>
     </div>
-    <div class="col-12 col-sm-6">
-      <%= link_to "Add to cart now", "#", class: 'button add-to-cart float-right' %>
+    <div class="col-12 col-sm-6" data-controller="addtocart" data-garmentid="<%= @garment.id %>">
+      <%= simple_form_for :cart, url: "" do |f| %>
+        <%= f.input_field :size,
+            class: 'float-right',
+            collection: ["S", "M", "L"],
+            selected: 2,
+            input_html: { data: { target: "addtocart.select" } }
+        %>
+      <% end %>
+
+      <%= link_to "add to cart", "#", class: 'button add-to-cart float-right', data: { target: "addtocart.button", action: "click->addtocart#add" } %>
       <p class="float-right price"><%= @garment.price %></p>
     </div>
   </div>

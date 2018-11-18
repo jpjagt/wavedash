@@ -1,0 +1,7 @@
+<div class="flex flex-center full-height clouds">
+  <%= render 'shared/postcard' do %>
+    <h1>contact us</h1>
+
+    <p>you can send us an email at <%= link_to ApplicationHelper::EMAIL, "mailto:#{ApplicationHelper::EMAIL}", target: :blank %></p>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 class Garment < ApplicationRecord
   belongs_to :category
 
-  has_many :images
+  has_many_attached :images
 
   def price
     ActionController::Base.helpers.number_to_currency(self.euros + (self.cents / 100.0))
@@ -16,6 +16,6 @@ class Garment < ApplicationRecord
   end
 
   def thumbnail
-    images.first&.src || ""
+    images.first&.path || "wavedash.png"
   end
 end

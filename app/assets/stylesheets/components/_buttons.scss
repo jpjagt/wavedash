@@ -2,5 +2,12 @@
   display: inline-block;
   padding: 7px 10px;
 
-  border: 1px solid white;
+  text-decoration: none;
+
+  border: 1px solid $black;
+
+  &:hover {
+    background: $black;
+    color: $white;
+  }
 }

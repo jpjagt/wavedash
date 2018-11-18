@@ -9,7 +9,7 @@ categories = [
   },
   {
     name: "hoodies",
-    description: "feel loved in these bastions of comfort"
+    description: "bringers of comfort"
   }
 ]
 
