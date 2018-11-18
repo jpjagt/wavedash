@@ -17,12 +17,12 @@
   // padding: 5px;
 }
 
-.col-xs-1 { @include col; width: calc(100% / 12 *  1); }
-.col-xs-2 { @include col; width: calc(100% / 12 *  2); }
-.col-xs-3 { @include col; width: calc(100% / 12 *  3); }
-.col-xs-4 { @include col; width: calc(100% / 12 *  4); }
-.col-xs-6 { @include col; width: calc(100% / 12 *  6); }
-.col-xs-12 { @include col; width: calc(100% / 12 * 12); }
+.col-1 { @include col; width: calc(100% / 12 *  1); }
+.col-2 { @include col; width: calc(100% / 12 *  2); }
+.col-3 { @include col; width: calc(100% / 12 *  3); }
+.col-4 { @include col; width: calc(100% / 12 *  4); }
+.col-6 { @include col; width: calc(100% / 12 *  6); }
+.col-12 { @include col; width: calc(100% / 12 * 12); }
 
 @media (min-width: $screen-sm) {
   .container {

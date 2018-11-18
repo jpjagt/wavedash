@@ -1,10 +1,10 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Spectral|Padauk|Cardo:700');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Padauk|Cardo:700');
 
 // Define fonts for body and headers
-$serif: "Spectral", "serif";
-$sans-serif: "Padauk", "Helvetica", "sans-serif";
-$header: "Helvetica", "sans-serif";
+$serif: "EB Garamond", "serif";
+$sans: "Padauk", "Helvetica Neue", "Helvetica", "sans-serif";
+$header: "Padauk", "Helvetica Neue", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

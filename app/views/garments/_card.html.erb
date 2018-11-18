@@ -1,16 +1,16 @@
 <%=
   link_to get_garment_path(garment),
-  class: 'garment-card col-xs-12 col-sm-4 hovercard',
+  class: 'garment-card col-12 col-sm-4 hovercard',
   data: {
     controller: "garmentcard",
     img: image_url(garment.thumbnail),
     action: "mouseover->garmentcard#display mouseout->garmentcard#hide"
   } do %>
-  <div class="col-xs-6 col-sm-12">
+  <div class="col-6 col-sm-12">
     <p class="name"><%= garment.name %></p>
     <p><%= garment.price %></p>
   </div>
-  <div class="col-xs-6 hidden-sm">
+  <div class="col-6 hidden-sm">
     <%= image_tag garment.thumbnail, class: 'full-height full-width' %>
   </div>
 <% end %>
