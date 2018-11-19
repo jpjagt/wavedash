@@ -2,6 +2,9 @@
   <%= render 'shared/postcard' do %>
     <h1>contact us</h1>
 
-    <p>you can send us an email at <%= link_to ApplicationHelper::EMAIL, "mailto:#{ApplicationHelper::EMAIL}", target: :blank %></p>
+    <p>please send us an email at <%= link_to ApplicationHelper::EMAIL, "mailto:#{ApplicationHelper::EMAIL}", target: :blank %></p>
+
+    <br>
+    <%= line_to "back", root_path %>
   <% end %>
 </div>
