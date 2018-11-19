@@ -1,15 +1,14 @@
-<% unless @hide_navbar %>
-  <div class="navbar">
-    <p><%= line_to "wavedash", root_path, class: 'wavedash' %></p>
-    <p class="navbar-right">
-      <% Category.all.each do |category| %>
-        <% if category == @category %>
-          <span class="bold"><%= category.name %></span> |
-        <% else %>
-          <%= line_to category.name, category_path(category.name) %> |
-        <% end %>
+<div class="navbar">
+  <p><%= line_to "wavedash", root_path, class: 'wavedash' %></p>
+  <p class="navbar-right">
+    <% Category.all.each do |category| %>
+      <% if category == @category %>
+        <span class="bold"><%= category.name %></span> |
+      <% else %>
+        <%= line_to category.name, category_path(category.name) %> |
       <% end %>
+    <% end %>
 
-      <%= line_to "cart", cart_path %></p>
-  </div>
-<% end %>
+    <%= line_to "cart", cart_path %>
+  </p>
+</div>

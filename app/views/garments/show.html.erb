@@ -3,21 +3,11 @@
 <div class="container">
   <div class="header">
     <div class="col-12 col-sm-6">
-      <h1><%= @garment.name %></h1>
+      <h1 class="no-margin"><%= @garment.name %></h1>
       <p><%= @garment.description %></p>
     </div>
-    <div class="col-12 col-sm-6" data-controller="addtocart" data-garmentid="<%= @garment.id %>">
-      <%= simple_form_for :cart, url: "" do |f| %>
-        <%= f.input_field :size,
-            class: 'float-right',
-            collection: ["S", "M", "L"],
-            selected: 2,
-            input_html: { data: { target: "addtocart.select" } }
-        %>
-      <% end %>
-
-      <%= link_to "add to cart", "#", class: 'button add-to-cart float-right', data: { target: "addtocart.button", action: "click->addtocart#add" } %>
-      <p class="float-right price"><%= @garment.price %></p>
+    <div class="col-12 col-sm-6">
+      <%= render 'garments/pricetag', garment: @garment %>
     </div>
   </div>
 

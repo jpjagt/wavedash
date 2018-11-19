@@ -1,0 +1,12 @@
+<div class="pricetag" data-controller="pricetag" data-garmentid="<%= garment.id %>">
+  <%= simple_form_for :cart, url: "" do |f| %>
+    <%= f.input_field :size,
+        collection: ["S", "M", "L"],
+        selected: 2,
+        data: { target: "pricetag.select" }
+    %>
+  <% end %>
+
+  <p class="price"><%= garment.price %></p>
+  <%= link_to "add to cart", "#", class: 'button add-to-cart', data: { target: "pricetag.button", action: "click->pricetag#add" } %>
+</div>
