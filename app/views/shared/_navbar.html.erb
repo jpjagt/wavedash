@@ -1,5 +1,5 @@
 <div class="navbar">
-  <p><%= line_to "wavedash", root_path, class: 'wavedash' %></p>
+  <p><%= line_to wavedashize, root_path, class: 'wavedash' %></p>
   <p class="navbar-right">
     <% Category.all.each do |category| %>
       <% if category == @category %>
@@ -9,6 +9,8 @@
       <% end %>
     <% end %>
 
-    <%= line_to "cart", cart_path %>
+    <%= line_to cart_path, id: "cart", data: { controller: "cart", cart_count: @order.count } do %>
+      cart <strong><span data-target="cart.count"><%= cart_count(@order.count) %></span></strong>
+    <% end %>
   </p>
 </div>

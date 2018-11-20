@@ -19,6 +19,10 @@ class Order < ApplicationRecord
     end
   end
 
+  def count
+    self.order_items.map(&:quantity).sum
+  end
+
   private
 
   def set_status
