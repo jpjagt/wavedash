@@ -1,4 +1,20 @@
-<p>
-  <%= line_to item.garment.name, get_garment_path(item.garment) %> in <%= item.size %> at <%= number_to_currency(item.garment.price) %>
-  <span class="float-right">x<%= item.quantity %>&nbsp;&nbsp;<%= number_to_currency(item.subtotal) %></span>
+<% garment = item.garment %>
+
+<p class="cartrow"
+   data-controller="cartrow"
+   data-cartrow-url="<%= add_garment_path(garment.slug) %>"
+   data-cartrow-size="<%= item.size %>"
+   data-cartrow-price="<%= garment.price %>"
+  >
+  <%= line_to garment.name, get_garment_path(garment) %> in <%= item.size %> at <%= number_to_currency(garment.price) %>
+
+  <span class="float-right">
+    <span class="quantity-control noselect">
+      <span class="plus" data-action="click->cartrow#increase">&plus;</span>
+      <span data-target="cartrow.quantity"><%= item.quantity %></span>
+      <span class="minus" data-action="click->cartrow#decrease">&minus;</span>
+    </span>
+
+    <span data-target="cartrow.subtotal" class="subtotal"><%= number_to_currency(item.subtotal) %></span>
+  </span>
 </p>

@@ -1,0 +1,24 @@
+#cart {
+  hr {
+    width: 100%;
+  }
+}
+
+.cartrow {
+  margin-bottom: 0.7rem;
+
+  .quantity-control {
+    margin-right: 1rem;
+  }
+
+  .plus, .minus {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .subtotal {
+    display: inline-block;
+    width: 4rem;
+    text-align: right;
+  }
+}

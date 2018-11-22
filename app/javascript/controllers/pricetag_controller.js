@@ -13,13 +13,15 @@ export default class extends Controller {
     this.buttonTarget.innerText = `a ${size} was added`
     this.buttonTarget.classList.add("active")
     this.data.set("added", true)
-    this.cartController.increase()
+    this.linkToCartController.increase()
 
     setTimeout(this.reset, 2500)
   }
 
   add() {
     event.preventDefault()
+
+    console.log("Adding...")
 
     if (!this.data.get("added")) {
       const size = this.selectTarget.value
@@ -34,8 +36,8 @@ export default class extends Controller {
     }
   }
 
-  get cartController() {
-    const cart = document.getElementById("cart")
-    return this.application.getControllerForElementAndIdentifier(cart, "cart")
+  get linkToCartController() {
+    const cart = document.getElementById("link-to-cart")
+    return this.application.getControllerForElementAndIdentifier(cart, "link-to-cart")
   }
 }

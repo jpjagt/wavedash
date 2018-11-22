@@ -1,16 +1,21 @@
 class Order < ApplicationRecord
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   has_many :garments, through: :order_items
 
   before_create :set_status
 
   def add(garment, size, quantity = 1)
+    return false, nil unless status == 1
+
     if order_items.exists?(garment: garment, size: size)
       item = order_items.find_by(garment: garment, size: size)
-      item.increase!(quantity)
+      persisted = item.increase!(quantity)
     else
-      order_items.create(garment: garment, size: size, quantity: quantity).persisted?
+      item = order_items.create(garment: garment, size: size, quantity: quantity)
+      persisted = item.persisted?
     end
+
+    return persisted, item.quantity
   end
 
   def status_text
@@ -24,7 +29,7 @@ class Order < ApplicationRecord
     end
   end
 
-  def count
+  def quantity
     self.order_items.map(&:quantity).sum
   end
 

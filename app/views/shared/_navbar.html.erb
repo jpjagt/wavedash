@@ -9,8 +9,6 @@
       <% end %>
     <% end %>
 
-    <%= line_to cart_path, id: "cart", data: { controller: "cart", cart_count: @order.count } do %>
-      cart <strong><span data-target="cart.count"><%= cart_count(@order.count) %></span></strong>
-    <% end %>
+    <%= render 'shared/link_to_cart' %>
   </p>
 </div>

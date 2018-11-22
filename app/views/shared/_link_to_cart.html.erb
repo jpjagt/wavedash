@@ -1,0 +1,3 @@
+<%= line_to cart_path, id: "link-to-cart", data: { controller: "link-to-cart", link_to_cart_count: @order.quantity } do %>
+  cart <strong><span data-target="link-to-cart.count"><%= cart_count(@order.quantity) %></span></strong>
+<% end %>

@@ -5,7 +5,7 @@
     <%= render 'categories/list', categories: @categories %>
 
     <ul class="footnote">
-      <li><%= line_to "cart", cart_path %></li>
+      <li><%= render 'shared/link_to_cart' %></li>
       <li><%= line_to "contact", contact_path %></li>
     </ul>
 

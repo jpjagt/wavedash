@@ -7,8 +7,10 @@ class GarmentsController < ApplicationController
   end
 
   def add
-    added = @order.add(@garment, params[:size])
-    render json: { added: added }
+    quantity = params[:quantity] || 1
+
+    added, item_quantity = @order.add(@garment, params[:size], quantity)
+    render json: { added: added, item_quantity: item_quantity }
   end
 
   private

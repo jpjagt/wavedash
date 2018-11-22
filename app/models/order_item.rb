@@ -2,12 +2,17 @@ class OrderItem < ApplicationRecord
   belongs_to :garment
   belongs_to :order
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :size, presence: true
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
+  validates :size, presence: true, inclusion: { in: %w[S M L] }
 
   def increase!(i)
     self.quantity = self.quantity + i
-    save
+
+    if self.quantity.zero?
+      return self.destroy.destroyed?
+    else
+      save
+    end
   end
 
   def subtotal

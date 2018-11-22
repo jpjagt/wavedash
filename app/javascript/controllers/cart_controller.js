@@ -1,20 +1,15 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "count" ]
+  static targets = [ "subtotal" ]
 
-  connect() {
-    this.setCount()
+  update_subtotal = (amount) => {
+    const subtotal = parseInt(this.subtotalTarget.innerText.slice(1)) + amount;
+    this.subtotalTarget.innerText = `$${subtotal.toFixed(2)}`
   }
 
-  increase = () => {
-    this.data.set("count", parseInt(this.data.get("count")) + 1)
-    this.setCount()
-  }
-
-  setCount = () => {
-    const count = this.data.get("count")
-    const text = count > 0 ? `/${count}/` : ""
-    this.countTarget.innerText = text;
+  get linkToCartController() {
+    const cart = document.getElementById("link-to-cart")
+    return this.application.getControllerForElementAndIdentifier(cart, "link-to-cart")
   }
 }
