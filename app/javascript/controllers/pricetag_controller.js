@@ -9,20 +9,28 @@ export default class extends Controller {
     this.data.delete("added")
   }
 
+  added = (size) => {
+    this.buttonTarget.innerText = `a ${size} was added`
+    this.buttonTarget.classList.add("active")
+    this.data.set("added", true)
+    this.cartController.increase()
+
+    setTimeout(this.reset, 2500)
+  }
+
   add() {
     event.preventDefault()
 
     if (!this.data.get("added")) {
-      const id = this.data.get("garment-id")
       const size = this.selectTarget.value
-      console.log(`adding ${id}[${size}] to cart`)
 
-      this.buttonTarget.innerText = `a ${size} was added`
-      this.buttonTarget.classList.add("active")
-      this.data.set("added", true)
-      this.cartController.increase();
-
-      setTimeout(this.reset, 2500);
+      fetch_post(this.data.get("url"), { size: size })
+        .then(response => response.json())
+        .then(data => {
+          if (data.added) {
+            this.added(size)
+          }
+        })
     }
   }
 

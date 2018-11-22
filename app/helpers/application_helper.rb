@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def get_garment_path(garment)
-    garment_path(garment.category.name, garment.path)
+    garment_path(garment.category.name, garment.slug)
   end
 
   def count_slashes(path)

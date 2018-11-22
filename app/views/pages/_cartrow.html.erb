@@ -1,0 +1,4 @@
+<p>
+  <%= line_to item.garment.name, get_garment_path(item.garment) %> in <%= item.size %> at <%= number_to_currency(item.garment.price) %>
+  <span class="float-right">x<%= item.quantity %>&nbsp;&nbsp;<%= number_to_currency(item.subtotal) %></span>
+</p>

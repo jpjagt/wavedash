@@ -4,8 +4,13 @@ class Order < ApplicationRecord
 
   before_create :set_status
 
-  def add(garment, quantity = 1)
-    self.order_items.create(garment: garment, quantity: quantity)
+  def add(garment, size, quantity = 1)
+    if order_items.exists?(garment: garment, size: size)
+      item = order_items.find_by(garment: garment, size: size)
+      item.increase!(quantity)
+    else
+      order_items.create(garment: garment, size: size, quantity: quantity).persisted?
+    end
   end
 
   def status_text
@@ -21,6 +26,10 @@ class Order < ApplicationRecord
 
   def count
     self.order_items.map(&:quantity).sum
+  end
+
+  def subtotal
+    order_items.map(&:subtotal).sum
   end
 
   private

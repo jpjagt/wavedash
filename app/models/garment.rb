@@ -7,15 +7,15 @@ class Garment < ApplicationRecord
   has_many_attached :images
 
   def price
-    ActionController::Base.helpers.number_to_currency(self.euros + (self.cents / 100.0))
+    self.euros + (self.cents / 100.0)
   end
 
-  def path
+  def slug
     self.name.parameterize
   end
 
-  def self.find_by_path(path)
-    self.find_by(name: path.gsub(/-/, ' '))
+  def self.find_by_slug(slug)
+    self.find_by(name: slug.gsub(/-/, ' '))
   end
 
   def thumbnail

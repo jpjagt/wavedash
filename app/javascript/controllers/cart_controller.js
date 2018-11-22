@@ -8,8 +8,6 @@ export default class extends Controller {
   }
 
   increase = () => {
-    console.log(this.data.get("count"))
-    console.log(parseInt(this.data.get("count")))
     this.data.set("count", parseInt(this.data.get("count")) + 1)
     this.setCount()
   }
