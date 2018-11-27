@@ -1,4 +1,4 @@
-<div class="flex flex-center full-height clouds" style="background-image: url('<%= image_path "facade/pattern" %>'); margin-bottom: 1rem">
+<div class="flex flex-center full-height clouds" style="height: 93vh; background-image: url('<%= image_path "facade/pattern.png" %>'); margin-bottom: 1rem">
   <div style="background-color: #fff; padding: 1.8rem 2.5rem; position: absolute; top: 15%; right: 0;">
     <h1 class="no-margin">pattern 2</h1>
     <p style="margin-bottom: 0.5rem"><em>by jeroen</em></p>
@@ -12,7 +12,7 @@
 
     <% @images.each do |src| %>
       <div class="col-12 col-sm-4 tap" data-colour="<%= src %>" style="margin-bottom: 10px">
-        <%= image_tag %(facade/#{src}), width: "100%", height: "auto" %>
+        <%= image_tag %(facade/#{src}.png), width: "100%", height: "auto" %>
       </div>
     <% end %>
   </div>
