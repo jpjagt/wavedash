@@ -136,3 +136,11 @@ div {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+
+
+.tap {
+  cursor: pointer;
+}
+.tap.tapped {
+  border: 1px solid $black;
+}

@@ -20,5 +20,7 @@
     <%= render 'shared/navbar' unless @hide_navbar %>
     <%= yield %>
     <%# render 'shared/footer' %>
+
+    <%= yield(:after_js) %>
   </body>
 </html>

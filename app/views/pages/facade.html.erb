@@ -1,0 +1,39 @@
+<div class="flex flex-center full-height clouds" style="background-image: url('<%= image_path "facade/pattern" %>'); margin-bottom: 1rem">
+  <div style="background-color: #fff; padding: 1.8rem 2.5rem; position: absolute; top: 15%; left: 10%;">
+    <h1 class="no-margin">pattern 2</h1>
+    <p><em>by jeroen</em></p>
+  </div>
+</div>
+
+<div class="full-width bg-white" style="background: white; padding-top: 1.5rem">
+  <div class="container">
+    <h2 class="text-center">please tap the colours you like most</h2>
+
+    <% @images.each do |src| %>
+      <div class="col-12 col-sm-4 tap" data-colour="<%= src %>" style="margin-bottom: 10px">
+        <%= image_tag %(facade/#{src}), width: "100%", height: "auto" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div style="overflow-x: scroll">
+    <%= image_tag "facade/pattern" %>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    const handle_tap = (event) => {
+      console.log(event.currentTarget.dataset.colour)
+      fetch(`/facade_api?colour=${event.currentTarget.dataset.colour}`)
+
+      event.currentTarget.classList.add("tapped")
+      event.currentTarget.insertAdjacentHTML('beforeend', "<p>thank you for your feedback &lt;3</p>")
+    }
+
+    document.querySelectorAll(".tap").forEach((elem) => {
+      console.log(elem)
+      elem.addEventListener("click", handle_tap)
+    })
+  </script>
+<% end %>
