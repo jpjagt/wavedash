@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_order
-  before_action :redirect_to_root
+  # before_action :redirect_to_root
 
   private
 

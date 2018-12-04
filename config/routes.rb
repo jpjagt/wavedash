@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'label', to: 'pages#label', as: 'label'
   get 'cart', to: 'pages#cart', as: 'cart'
   get 'contact', to: 'pages#contact', as: 'contact'
 
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
   get '/:category_name/:slug', to: 'garments#show', as: 'garment'
   post '/garments/:slug/add', to: 'garments#add', as: 'add_garment'
 
-  root to: 'pages#facade'
+  root to: 'pages#home'
 end

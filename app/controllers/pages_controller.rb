@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :redirect_to_root, only: [:facade, :facade_api]
+  # skip_before_action :redirect_to_root, only: [:home, :facade, :facade_api]
 
   def home
     @categories = Category.all
@@ -8,6 +8,10 @@ class PagesController < ApplicationController
   end
 
   def cart
+  end
+
+  def label
+    @hide_navbar = true
   end
 
   def facade

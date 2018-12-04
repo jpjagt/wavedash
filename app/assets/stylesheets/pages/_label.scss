@@ -1,0 +1,38 @@
+$label_sizing: 1.6rem;
+
+#label {
+  width: 50vh;
+  margin: 0 auto;
+
+  text-align: center;
+
+  #envelope {
+    padding-bottom: 0;
+    height: $label_sizing * 9;
+  }
+
+  #postcard {
+    padding: $label_sizing;
+  }
+
+  #title {
+    line-height: $label_sizing * 2;
+    font-size: 3.2rem;
+    margin: 0;
+  }
+
+  h2 {
+    line-height: $label_sizing;
+    margin: $label_sizing 0;
+  }
+
+  p, a {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  p, a, h2 {
+    font-family: "sans-serif", "Helvetica Neue";
+    line-height: $label_sizing;
+  }
+}
