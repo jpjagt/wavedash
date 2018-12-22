@@ -7,9 +7,12 @@
   }
 
   .price {
-    font-size: 24px;
-
     float: left;
+
+    h3 {
+      margin: 0;
+      font-size: 24px;
+    }
   }
 
   .add-to-cart {

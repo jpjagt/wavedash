@@ -10,6 +10,10 @@
     %>
   <% end %>
 
-  <p class="price"><%= number_to_currency(garment.price) %></p>
+  <div class="price">
+    <h3><%= currency(garment.price) %></h3>
+    <p>free shipping <span class="grey"><em>*airplane noises*</em></span></p>
+  </div>
+
   <%= link_to "add to cart", "#", class: 'button add-to-cart', data: { target: "pricetag.button", action: "click->pricetag#add" } %>
 </div>

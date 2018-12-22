@@ -2,11 +2,11 @@
 
 <div class="container">
   <div class="header" style="padding-top: 50px">
-    <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6" style="margin-bottom: 16px; padding-right: 16px">
       <h1 class="no-margin"><%= @garment.name %></h1>
       <p><%= @garment.description %></p>
     </div>
-    <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6" style="margin-bottom: 16px">
       <%= render 'garments/pricetag', garment: @garment %>
     </div>
   </div>

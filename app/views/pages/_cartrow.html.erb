@@ -6,7 +6,7 @@
    data-cartrow-size="<%= item.size %>"
    data-cartrow-price="<%= garment.price %>"
   >
-  <%= line_to garment.name, get_garment_path(garment) %> in <%= item.size %> at <%= number_to_currency(garment.price) %>
+  <%= line_to garment.name, get_garment_path(garment) %> in <%= item.size %> at <%= currency(garment.price) %>
 
   <span class="float-right">
     <span class="quantity-control noselect">
@@ -15,6 +15,6 @@
       <span class="minus" data-action="click->cartrow#decrease">&minus;</span>
     </span>
 
-    <span data-target="cartrow.subtotal" class="subtotal"><%= number_to_currency(item.subtotal) %></span>
+    <span data-target="cartrow.subtotal" class="subtotal"><%= currency(item.subtotal) %></span>
   </span>
 </p>

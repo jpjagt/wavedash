@@ -16,6 +16,8 @@ class GarmentsController < ApplicationController
   private
 
   def set_garment
+    puts params[:slug]
+    puts Garment.first.slug
     @garment = Garment.find_by_slug(params[:slug])
   end
 end

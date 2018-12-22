@@ -13,8 +13,8 @@
       <hr>
 
       <p><strong>
-        subtotal:
-        <span class="float-right" data-target="cart.subtotal"><%= number_to_currency(@order.subtotal) %></span>
+        total:
+        <span class="float-right" data-target="cart.subtotal"><%= currency(@order.subtotal) %></span>
       </strong></p>
       <% unless @order.quantity > 0 %>
         <p class="text-right"><em>(duhh, it's empty)</em></p>
