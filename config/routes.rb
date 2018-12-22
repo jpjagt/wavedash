@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  get 'label', to: 'pages#label', as: 'label'
-  get 'cart', to: 'pages#cart', as: 'cart'
-  get 'contact', to: 'pages#contact', as: 'contact'
+  get 'label', to: 'pages#label', as: :label
+  get 'contact', to: 'pages#contact', as: :contact
+
+  # checkout
+  get 'cart', to: 'pages#cart', as: :cart
+  get 'checkout', to: 'addresses#new', as: :checkout
+  post 'checkout', to: 'addresses#create'
 
   get 'facade_api', to: 'pages#facade_api'
 

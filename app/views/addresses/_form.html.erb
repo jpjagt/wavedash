@@ -1,0 +1,12 @@
+<%= simple_form_for @address, url: checkout_path, method: :post do |form| %>
+  <%= form.input :first_name %>
+  <%= form.input :last_name %>
+  <br>
+  <%= form.input :street %>
+  <%= form.input :postal_code %>
+  <%= form.input :city %>
+  <%= form.input :province %>
+  <%= form.input :country %>
+
+  <%= form.submit "submit", class: 'button' %>
+<% end %>

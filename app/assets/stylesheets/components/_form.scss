@@ -1,5 +1,9 @@
 input, select, textarea {
-  padding: 0.5rem 1rem;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 0.2rem 0.3rem;
 
   font-family: $sans;
   font-size: 1rem;
@@ -9,10 +13,44 @@ input, select, textarea {
   border: 1px solid $black;
   border-radius: 0;
   box-shadow: none;
+
+  transition: all 0.2s;
+}
+
+input, textarea {
+  &:focus {
+    outline: none;
+    border-bottom-width: 3px;
+  }
 }
 
 select {
   border: 0;
 
   outline: 1px solid $black;
+}
+
+abbr[title="required"] {
+  display: none;
+}
+
+.form-group {
+  padding-bottom: 0.5rem;
+
+  label {
+    text-transform: lowercase;
+  }
+}
+
+.form-group.has-error {
+  input, textarea {
+    border-color: $red;
+  }
+  select {
+    outline-color: $red;
+  }
+
+  .help-block {
+    color: $red;
+  }
 }

@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :garments, through: :order_items
 
+  has_one :address, dependent: :destroy
+
   before_create :set_status
 
   def add(garment, size, quantity = 1)
@@ -30,11 +32,15 @@ class Order < ApplicationRecord
   end
 
   def quantity
-    self.order_items.map(&:quantity).sum
+    order_items.map(&:quantity).sum
   end
 
   def subtotal
     order_items.map(&:subtotal).sum
+  end
+
+  def empty?
+    order_items.empty?
   end
 
   private

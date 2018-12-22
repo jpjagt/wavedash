@@ -12,6 +12,7 @@ gem 'autoprefixer-rails'
 gem 'sass-rails'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'simple_form'
+gem 'country_select'
 gem 'uglifier'
 gem 'webpacker', '~> 3.5'
 

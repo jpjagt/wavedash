@@ -1,0 +1,10 @@
+<% content_for(:title) do %>enter your address<% end %>
+
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard', column_classes: "full-height" do %>
+    <h1>enter your address</h1>
+    <br>
+
+    <%= render 'form' %>
+  <% end %>
+</div>
