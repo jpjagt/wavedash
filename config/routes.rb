@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'ideal', to: 'charges#ideal', as: :ideal_callback
 
   get 'facade_api', to: 'pages#facade_api'
+  get 'login', to: 'pages#login'
 
   get '/:name', to: 'categories#show', as: :category
   get '/:category_name/:slug', to: 'garments#show', as: :garment

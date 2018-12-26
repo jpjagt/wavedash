@@ -1,13 +1,24 @@
 class PagesController < ApplicationController
-  # skip_before_action :redirect_to_root, only: [:home, :facade, :facade_api]
+  skip_before_action :redirect_to_root, only: [:home, :facade, :facade_api, :login]
+  http_basic_authenticate_with name: "jeroen", password: "gridwave", only: [:login]
 
   def home
-    @categories = Category.all
-
-    @hide_navbar = true
+    unless logged_in?
+      @images = %w[clay grass ink ocean ochre oldschool green pink spring]
+      @hide_navbar = true
+      render :facade
+    else
+      @categories = Category.all
+      @hide_navbar = true
+    end
   end
 
   def cart
+  end
+
+  def login
+    session[:login] = "jeroen"
+    redirect_to root_path
   end
 
   def label
