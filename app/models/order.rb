@@ -39,8 +39,32 @@ class Order < ApplicationRecord
     order_items.map(&:subtotal).sum
   end
 
+  def stripe_amount
+    # stripe wants amount in cents in integer
+    (subtotal * 100).to_i
+  end
+
   def empty?
     order_items.empty?
+  end
+
+  def paid?
+    !paid_at.nil?
+  end
+
+  def mark_as_paid!
+    self.paid_at = DateTime.now
+    save
+  end
+
+  def self.set_order(id)
+    if exists?(id)
+      order = find(id)
+      return order unless order.paid?
+    end
+
+    # create a new order
+    return Order.create
   end
 
   private

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.4'
 
 gem 'bootsnap'
+gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
@@ -17,6 +18,8 @@ gem 'uglifier'
 gem 'webpacker', '~> 3.5'
 
 gem 'turbolinks', '~> 5.2.0'
+
+gem 'stripe'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

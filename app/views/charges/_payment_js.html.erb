@@ -1,0 +1,35 @@
+<%# this file should be included on any page with at least one Stripe payment option %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_include_tag "https://js.stripe.com/v3/" %>
+  <script>
+    function showLoading(form) {
+      var submit = form.querySelector('.submit')
+      submit.classList.add("disabled")
+      submit.setAttribute("disabled", true)
+      submit.setAttribute("value", "processing...")
+    }
+
+    function stopLoading(form) {
+      var submit = form.querySelector('.submit')
+      submit.classList.remove("disabled")
+      submit.setAttribute("disabled", false)
+      submit.setAttribute("value", "pay")
+    }
+
+    function showError(elem, message) {
+      elem.textContent = message
+      elem.classList.remove('d-none')
+    }
+
+    function hideError(elem) {
+      elem.textContent = ''
+      elem.classList.add('d-none')
+    }
+
+    // Create a Stripe client.
+    var stripe = Stripe("<%= Rails.configuration.stripe[:publishable_key] %>");
+    // Create an instance of Elements.
+    var elements = stripe.elements();
+  </script>
+<% end %>

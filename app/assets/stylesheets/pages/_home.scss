@@ -14,11 +14,17 @@
   &.full-height {
     height: 88%;
   }
-}
 
-#column.full-height #envelope {
-  height: 88%;
-  padding-bottom: 0;
+  &.half-height {
+    height: 50%;
+  }
+
+  &.full-height, &.half-height {
+    #envelope {
+      height: 100%;
+      padding-bottom: 0;
+    }
+  }
 }
 
 #envelope {
@@ -48,11 +54,9 @@
   border: 1px solid $black;
   border-right-width: 4px;
 
-  h1, a {
-    color: $black;
-  }
-
   h1 {
+    color: $black;
+
     margin: 0;
 
     font-size: 1.6rem;

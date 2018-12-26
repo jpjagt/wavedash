@@ -10,7 +10,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params.merge(order: @order))
 
     if @address.save
-      redirect_to root_path
+      redirect_to payment_path
     else
       render :new
     end

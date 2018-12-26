@@ -6046,7 +6046,14 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-stimulus@^1.1.0:
+stimulus-tabs@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/stimulus-tabs/-/stimulus-tabs-1.0.4.tgz#4c8c5855c48b437b07ad187128f24195e3fd3998"
+  integrity sha512-J/XgbJsedrg6xzZdEU7w/wXziJbhzd6fgikIsjOL3OLBgKnsRPGfFzRTE3SWXY0nfAHfDGshn5IqRrWNeN3uPw==
+  dependencies:
+    stimulus "^1.0.1"
+
+stimulus@^1.0.1, stimulus@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-1.1.0.tgz#d313e59bc0085eec5e072a401e0fb2c5fb0a0301"
   integrity sha512-H5B/jYGoKHW7KZCdkxsjml16wMp9ubHh/Db2ewcMWIV5Y4LOGKqYOKsNDs650DidKdGht8CBTtF7jAodIOHZMA==

@@ -10,12 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_order
-    begin
-      @order = Order.find(session[:order_id])
-    rescue ActiveRecord::RecordNotFound
-      # create a new order
-      @order = Order.create
-      session[:order_id] = @order.id
-    end
+    @order = Order.set_order(session[:order_id])
+    session[:order_id] = @order.id unless @order.id == session[:order_id]
   end
 end
