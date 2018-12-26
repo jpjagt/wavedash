@@ -48,6 +48,10 @@ class Order < ApplicationRecord
     order_items.empty?
   end
 
+  def valid_address?
+    !address.nil?
+  end
+
   def paid?
     !paid_at.nil?
   end

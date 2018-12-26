@@ -1,19 +1,17 @@
 .flash {
-  display: block;
-
-  padding: 1rem;
+  padding: 0.7rem;
   margin-bottom: 1rem;
 
   &.alert {
     background: $red;
-    p {
+    &, p {
       color: white;
     }
   }
 
   &.notice {
     background: $grey;
-    p {
+    &, p {
       color: $black;
     }
   }

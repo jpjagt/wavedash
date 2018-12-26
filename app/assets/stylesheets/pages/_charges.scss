@@ -1,8 +1,13 @@
-#card-element, #ideal-bank-element {
-  margin-bottom: 1rem;
+#creditcard-element, #ideal-bank-element {
   border: 1px solid $black;
 }
 
-#card-element {
+#creditcard-element {
   padding: 8px 6px;
+}
+
+#ideal-form, #creditcard-form {
+  .form-row {
+    margin-bottom: 1rem;
+  }
 }

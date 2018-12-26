@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   before_action :set_amount
-  before_action :check_if_user_has_not_paid!
+  before_action :validate_order
 
   def new
   end
@@ -70,8 +70,13 @@ class ChargesController < ApplicationController
     @amount = @order.stripe_amount
   end
 
-  def check_if_user_has_not_paid!
-    # if user's already paid, redirect to success path
-    # redirect_to register_success_path if @current_user.has_paid?
+  def validate_order
+    if @order.empty?
+      redirect_to cart_path
+    elsif !@order.valid_address?
+      redirect_to checkout_path
+    elsif @order.paid?
+      redirect_to root_path
+    end
   end
 end

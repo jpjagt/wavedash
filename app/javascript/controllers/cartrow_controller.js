@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [ "quantity", "subtotal" ]
 
   update_subtotal = (amount) => {
-    this.subtotalTarget.innerText = `$${amount.toFixed(2)}`
+    this.subtotalTarget.innerText = `€${amount.toFixed(2)}`
   }
 
   update = (quantity) => {

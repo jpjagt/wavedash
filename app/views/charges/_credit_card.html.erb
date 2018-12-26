@@ -1,10 +1,10 @@
-<%= form_tag payment_path, id: 'credit-card-form' do %>
+<%= form_tag payment_path, id: 'creditcard-form' do %>
   <div class="form-row">
-    <label for="card-element">credit card</label>
+    <label for="creditcard-element">credit card</label>
     <%# JS below will insert card form into this div %>
-    <div id="card-element"></div>
+    <div id="creditcard-element"></div>
 
-    <p class="d-none" id="card-errors" role="alert"></p>
+    <p class="d-none flash alert" id="creditcard-errors" role="alert"></p>
   </div>
 
   <input type="submit" class="submit button" value="pay">
@@ -16,7 +16,7 @@
       base: {
         color: '#32325d',
         lineHeight: '18px',
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontFamily: '"Padauk", "Helvetica Neue", "Helvetica", "sans-serif"',
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
@@ -32,11 +32,11 @@
     // Create an instance of the card Element.
     var card = elements.create('card', { style: style });
 
-    // Add an instance of the card Element into the `card-element` <div>.
-    card.mount('#card-element');
+    // Add an instance of the card Element into the `creditcard-element` <div>.
+    card.mount('#creditcard-element');
 
-    var cardError = document.getElementById('card-errors');
-    var cardForm = document.getElementById('credit-card-form');
+    var cardError = document.getElementById('creditcard-errors');
+    var cardForm = document.getElementById('creditcard-form');
 
     // Handle real-time validation errors
     card.addEventListener('change', function(event) {

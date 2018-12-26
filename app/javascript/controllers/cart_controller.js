@@ -5,7 +5,7 @@ export default class extends Controller {
 
   update_subtotal = (amount) => {
     const subtotal = parseInt(this.subtotalTarget.innerText.slice(1)) + amount;
-    this.subtotalTarget.innerText = `$${subtotal.toFixed(2)}`
+    this.subtotalTarget.innerText = `€${subtotal.toFixed(2)}`
   }
 
   get linkToCartController() {

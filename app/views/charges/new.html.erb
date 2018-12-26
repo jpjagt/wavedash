@@ -11,18 +11,18 @@
 
     <div data-controller="tabs">
       <div class="tabs">
-        <a class="button" data-action="tabs#showCreditcard" href="#">credit card</a>
         <a class="button" data-action="tabs#showIdeal" href="#">iDeal</a>
+        <a class="button" data-action="tabs#showCreditcard" href="#">credit card</a>
       </div>
 
       <br>
 
       <div class="tabs-content">
-        <div data-target="tabs.creditcard">
-          <%= render 'credit_card' %>
-        </div>
         <div data-target="tabs.ideal">
           <%= render 'ideal' %>
+        </div>
+        <div data-target="tabs.creditcard">
+          <%= render 'credit_card' %>
         </div>
       </div>
     </div>
