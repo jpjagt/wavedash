@@ -21,6 +21,8 @@ gem 'turbolinks', '~> 5.2.0'
 
 gem 'stripe'
 
+gem 'browser'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'rails_real_favicon'

@@ -5,6 +5,7 @@ class Garment < ApplicationRecord
   has_many :orders, through: :order_items
 
   has_many_attached :images
+  has_one_attached :thumbnail
 
   def price
     self.euros + (self.cents / 100.0)
@@ -18,7 +19,7 @@ class Garment < ApplicationRecord
     self.find_by(name: slug.gsub(/-/, ' '))
   end
 
-  def thumbnail
-    images.first&.path || "wavedash.png"
+  def get_thumbnail
+    thumbnail.attached? ? thumbnail : "wavedash.png"
   end
 end

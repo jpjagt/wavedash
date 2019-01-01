@@ -24,6 +24,16 @@ module ApplicationHelper
     number_to_currency(amount, unit: "€ ")
   end
 
+  def platform_as_class
+    platform = browser.platform
+    case
+    when platform.mac?
+      :mac
+    when platform.windows?
+      :windows
+    end
+  end
+
   def count_slashes(path)
     return 0 if path == "/"
     path.scan(/\//).count

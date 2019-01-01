@@ -52,8 +52,6 @@
 
   text-decoration: none;
 
-  cursor: image-url('cursors/forward.png') 12 12, pointer;
-
   &:after {
     content: "";
 
@@ -80,11 +78,37 @@
     &:hover:after {
       animation: line-back 0.44s infinite;
     }
-
-    cursor: image-url('cursors/back.png') 12 12, pointer;
   }
 
   &.wavedash {
     height: 16px;
+  }
+}
+
+// // // // CURSORS // // // //
+// default
+.line {
+  cursor: image-url('cursors/forward.png') 12 12, pointer;
+
+  &.back {
+    cursor: image-url('cursors/back.png') 12 12, pointer;
+  }
+}
+
+// mac
+html.mac .line {
+  cursor: e-resize;
+
+  &.back {
+    cursor: w-resize;
+  }
+}
+
+// windows
+html.windows .line {
+  cursor: pointer;
+
+  &.back {
+    cursor: pointer;
   }
 }

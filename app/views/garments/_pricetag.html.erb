@@ -5,7 +5,7 @@
   <%= simple_form_for :cart, url: "" do |f| %>
     <%= f.input_field :size,
         collection: ["S", "M", "L"],
-        selected: 2,
+        selected: "M",
         data: { target: "pricetag.select" }
     %>
   <% end %>
