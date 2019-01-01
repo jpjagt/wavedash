@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :garments, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
+
   get 'label', to: 'pages#label', as: :label
   get 'contact', to: 'pages#contact', as: :contact
 

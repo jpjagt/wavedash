@@ -3,7 +3,7 @@
   class: 'garment-card col-12 col-sm-4 hovercard',
   data: {
     controller: "garmentcard",
-    garmentcard_img: image_url(garment.thumbnail),
+    garmentcard_img: url_for(garment.thumbnail_path),
     action: "mouseover->garmentcard#display mouseout->garmentcard#hide"
   } do %>
   <div class="col-6 col-sm-12">
@@ -11,6 +11,6 @@
     <p><%= currency(garment.price) %></p>
   </div>
   <div class="col-6 hidden-sm">
-    <%= image_tag garment.thumbnail, class: 'full-height full-width' %>
+    <%= image_tag garment.thumbnail_path, class: 'full-height full-width' %>
   </div>
 <% end %>

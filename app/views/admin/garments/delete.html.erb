@@ -1,0 +1,9 @@
+<% content_for(:title) do %>destroy garment<% end %>
+
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard' do %>
+    <p>garment <%= @name %> was <%= @destroyed ? "successfully destroyed" : "not destroyed :(" %></p>
+
+    <%= line_to "all garments", admin_garments_path %>
+  <% end %>
+</div>

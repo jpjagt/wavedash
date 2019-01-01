@@ -13,7 +13,7 @@
 
   <% @garment.images.each do |image| %>
     <div class="col-12 col-md-12">
-      <%= image_tag image.src, width: '100%', height: 'auto' %>
+      <%= image_tag image, width: '100%', height: 'auto' %>
     </div>
   <% end %>
 </div>

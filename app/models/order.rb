@@ -6,6 +6,8 @@ class Order < ApplicationRecord
 
   before_create :set_status
 
+  scope :paid, -> { where.not(paid_at: nil) }
+
   def add(garment, size, quantity = 1)
     return false, nil unless status == 1
 
@@ -70,6 +72,12 @@ class Order < ApplicationRecord
 
     # create a new order
     return Order.create
+  end
+
+  # statistical methods
+
+  def self.units_sold
+    all.paid.includes(:order_items).group(:garment_id).sum(:quantity).except(nil)
   end
 
   private

@@ -1,0 +1,14 @@
+<%= simple_form_for [:admin, @garment] do |form| %>
+  <%= form.input :name %>
+  <%= form.input :description %>
+  <br>
+  <%= form.input :euros %>
+  <%= form.input :cents %>
+  <br>
+  <%= form.association :category %>
+  <br>
+  <%= form.file_field :thumbnail %>
+  <%= form.file_field :images, multiple: true %>
+  <br>
+  <%= form.submit "submit", class: 'button' %>
+<% end %>

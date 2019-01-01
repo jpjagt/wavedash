@@ -16,10 +16,6 @@ module ApplicationHelper
     end
   end
 
-  def get_garment_path(garment)
-    garment_path(garment.category.name, garment.slug)
-  end
-
   def currency(amount)
     number_to_currency(amount, unit: "€ ")
   end

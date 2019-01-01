@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ControllerHelper
+
   protect_from_forgery with: :exception
   before_action :set_order
   before_action :redirect_to_root
@@ -12,9 +14,5 @@ class ApplicationController < ActionController::Base
   def set_order
     @order = Order.set_order(session[:order_id])
     session[:order_id] = @order.id unless @order.id == session[:order_id]
-  end
-
-  def logged_in?
-    session[:login] == "jeroen"
   end
 end

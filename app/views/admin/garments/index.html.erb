@@ -1,0 +1,14 @@
+<% content_for(:title) do %>all garments<% end %>
+
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard', column_classes: "full-height" do %>
+    <h1>all garments</h1>
+    <br>
+
+    <%= line_to "new garment", new_admin_garment_path %>
+    <br>
+    <br>
+
+    <%= render 'table', garments: @garments %>
+  <% end %>
+</div>
