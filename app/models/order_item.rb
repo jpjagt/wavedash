@@ -2,7 +2,7 @@ class OrderItem < ApplicationRecord
   belongs_to :garment
   belongs_to :order
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 21 }
   validates :size, presence: true, inclusion: { in: %w[S M L] }
 
   def increase!(i)
