@@ -1,14 +1,20 @@
 <div class="navbar">
   <p><%= line_to wavedashize, root_path, class: 'wavedash' %></p>
-  <p class="navbar-right">
-    <% Category.all.each do |category| %>
-      <% if category == @category %>
-        <span class="bold"><%= category.name %></span> |
-      <% else %>
-        <%= line_to category.name, category_path(category.name) %> |
-      <% end %>
-    <% end %>
 
-    <%= render 'shared/link_to_cart' %>
+  <p class="navbar-right">
+    <% if in_admin_view? %>
+      <% %w[orders garments].each do |page| %>
+        <% path = send("admin_#{page}_path") %>
+        <%= line_to page, path, class: cp(path) %> |
+      <% end %>
+      <em>waveadmin v1.0</em>
+    <% else %>
+      <% Category.all.each do |category| %>
+        <% path = category_path(category.name) %>
+        <%= line_to category.name, path, class: cp(path) %> |
+      <% end %>
+
+      <%= render 'shared/link_to_cart' %>
+    <% end %>
   </p>
 </div>

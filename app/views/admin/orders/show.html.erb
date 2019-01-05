@@ -1,0 +1,23 @@
+<% content_for(:title) do %>order #<%= @order.id %> ~ waveadmin<% end %>
+
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard', column_classes: "full-height" do %>
+    <h1>order #<%= @order.id %></h1>
+    <p><%= line_to "back to overview", admin_orders_path %></p>
+    <br>
+
+    <%= render 'order_items/table', order_items: @order.order_items %>
+
+    <br>
+    <h3>client:</h3>
+    <p><%= @order.address.name %>, <%= link_to @order.address.email, "mailto:#{@order.address.email}", target: :blank %></p>
+
+    <br>
+    <h3>address:</h3>
+    <p>
+      <% %w[street postal_code city province country].each do |attribute| %>
+        <%= @order.address.send(attribute) %><br>
+      <% end %>
+    </p>
+  <% end %>
+</div>

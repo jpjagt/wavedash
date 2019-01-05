@@ -1,6 +1,14 @@
 module ApplicationHelper
   EMAIL = "hi@wavedash.club"
 
+  def in_admin_view?
+    controller.class.parents.include?(Admin)
+  end
+
+  def cp(path)
+    "current" if current_page?(path)
+  end
+
   def wavedashize(name = "wavedash")
     case rand(100)
     when 0..3

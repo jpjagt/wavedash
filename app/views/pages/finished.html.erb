@@ -8,28 +8,7 @@
     <p>here's what you ordered:</p>
     <br>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>name</th>
-          <th>size</th>
-          <th>quantity</th>
-          <th align="right">price (individual)</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @finished_order.order_items.each do |oi| %>
-          <% garment = oi.garment %>
-          <tr>
-            <td><%= link_to garment.name, get_garment_path(garment), target: :blank %></td>
-            <td><%= oi.size %></td>
-            <td><%= oi.quantity %></td>
-            <td align="right"><%= currency(garment.price) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'order_items/table', order_items: @finished_order.order_items %>
 
     <hr>
     <p><strong>

@@ -4,12 +4,10 @@ class Order < ApplicationRecord
 
   has_one :address, dependent: :destroy
 
-  before_create :set_status
-
   scope :paid, -> { where.not(paid_at: nil) }
 
   def add(garment, size, quantity = 1)
-    return false, nil unless status == 1
+    return false, nil if status == "paid"
 
     if order_items.exists?(garment: garment, size: size)
       item = order_items.find_by(garment: garment, size: size)
@@ -22,14 +20,14 @@ class Order < ApplicationRecord
     return persisted, item.quantity
   end
 
-  def status_text
-    case status
-    when 1
-      "browsing"
-    when 2
-      "completed"
+  def status
+    case
+    when paid?
+      "paid"
+    when !address.nil?
+      "address entered"
     else
-      "invalid status"
+      "browsing"
     end
   end
 
@@ -89,11 +87,5 @@ class Order < ApplicationRecord
 
   def self.deobfuscate_id(id)
     id * ENV['OBFUSCATOR_MI'].to_i % 1000000
-  end
-
-  private
-
-  def set_status
-    self.status = 1
   end
 end

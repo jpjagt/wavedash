@@ -1,0 +1,12 @@
+<% content_for(:title) do %>all orders ~ waveadmin<% end %>
+
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard', column_classes: "full-height" do %>
+    <h1>all orders</h1>
+    <br>
+
+    <p>click an id to view specific order information.</p>
+
+    <%= render 'table', orders: @orders %>
+  <% end %>
+</div>

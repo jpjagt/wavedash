@@ -17,4 +17,13 @@
   .navbar-right {
     margin-left: auto;
   }
+
+  a.current {
+    text-decoration: none;
+    font-weight: bold;
+
+    &.line::after {
+      height: 0%;
+    }
+  }
 }

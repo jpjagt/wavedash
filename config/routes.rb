@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :garments, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :orders, only: [:index, :show]
   end
 
   get 'label', to: 'pages#label', as: :label

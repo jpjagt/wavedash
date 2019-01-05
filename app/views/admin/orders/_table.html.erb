@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>status</th>
+      <th>quantity</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, admin_order_path(order) %></td>
+        <td><%= order.status %></td>
+        <td><%= order.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
