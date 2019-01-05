@@ -14,7 +14,7 @@
           <th>name</th>
           <th>size</th>
           <th>quantity</th>
-          <th>price (individual)</th>
+          <th align="right">price (individual)</th>
         </tr>
       </thead>
 
@@ -25,10 +25,16 @@
             <td><%= link_to garment.name, get_garment_path(garment), target: :blank %></td>
             <td><%= oi.size %></td>
             <td><%= oi.quantity %></td>
-            <td><%= currency(garment.price) %></td>
+            <td align="right"><%= currency(garment.price) %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+
+    <hr>
+    <p><strong>
+      total:
+      <span class="float-right" data-target="cart.subtotal"><%= currency(@finished_order.subtotal) %></span>
+    </strong></p>
   <% end %>
 </div>
