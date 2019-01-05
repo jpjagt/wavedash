@@ -63,7 +63,7 @@ class ChargesController < ApplicationController
 
   def successfull_payment_callback
     @order.mark_as_paid!
-    redirect_to root_path
+    redirect_to finished_path(order: @order.obfuscated_id)
   end
 
   def set_amount

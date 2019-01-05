@@ -1,0 +1,34 @@
+<% content_for(:title) do %>finished checkout<% end %>
+
+<div class="flex flex-center full-height clouds">
+  <%= render 'shared/postcard' do %>
+    <h1>thank you for your order, <%= @finished_order.address.first_name %></h1>
+    <br>
+    <p>you'll receive an email with details.</p>
+    <p>here's what you ordered:</p>
+    <br>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>size</th>
+          <th>quantity</th>
+          <th>price (individual)</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @finished_order.order_items.each do |oi| %>
+          <% garment = oi.garment %>
+          <tr>
+            <td><%= link_to garment.name, get_garment_path(garment), target: :blank %></td>
+            <td><%= oi.size %></td>
+            <td><%= oi.quantity %></td>
+            <td><%= currency(garment.price) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

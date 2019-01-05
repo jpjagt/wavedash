@@ -6,13 +6,17 @@ Rails.application.routes.draw do
   get 'label', to: 'pages#label', as: :label
   get 'contact', to: 'pages#contact', as: :contact
 
-  # checkout flow
+  # cart
   get 'cart', to: 'pages#cart', as: :cart
+  # checkout / address
   get 'checkout', to: 'addresses#new', as: :checkout
   post 'checkout', to: 'addresses#create'
+  # payment
   get 'pay', to: 'charges#new', as: :payment
   post 'pay', to: 'charges#create'
   get 'ideal', to: 'charges#ideal', as: :ideal_callback
+  # post-order screen
+  get 'finished', to: 'pages#finished', as: :finished
 
   get 'facade_api', to: 'pages#facade_api'
   get 'login', to: 'pages#login'

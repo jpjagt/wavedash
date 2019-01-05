@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:first_name, :last_name, :street, :postal_code, :city, :province, :country)
+    params.require(:address).permit(:first_name, :last_name, :email, :street, :postal_code, :city, :province, :country)
   end
 
   def validate_order

@@ -16,6 +16,18 @@ class PagesController < ApplicationController
   def cart
   end
 
+  def finished
+    obfuscated_id = params[:order].to_i || 1 # need to pass value
+    id = Order.deobfuscate_id(obfuscated_id).to_i
+
+    unless Order.exists?(id)
+      redirect_to root_path
+      return
+    end
+
+    @finished_order = Order.find(id)
+  end
+
   def login
     session[:login] = "jeroen"
     redirect_to root_path

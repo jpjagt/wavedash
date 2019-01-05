@@ -80,6 +80,17 @@ class Order < ApplicationRecord
     all.paid.includes(:order_items).group(:garment_id).sum(:quantity).except(nil)
   end
 
+  # obfuscated id using multiplicative inverse
+  # https://ericlippert.com/2013/11/14/a-practical-use-of-multiplicative-inverses/
+
+  def obfuscated_id
+    id * ENV['OBFUSCATOR'].to_i % 1000000
+  end
+
+  def self.deobfuscate_id(id)
+    id * ENV['OBFUSCATOR_MI'].to_i % 1000000
+  end
+
   private
 
   def set_status
