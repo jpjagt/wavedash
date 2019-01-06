@@ -18,10 +18,8 @@ export default class extends Controller {
     setTimeout(this.reset, 2500)
   }
 
-  add() {
+  add(event) {
     event.preventDefault()
-
-    console.log("Adding...")
 
     if (!this.data.get("added")) {
       const size = this.selectTarget.value

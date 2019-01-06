@@ -8,6 +8,12 @@
 
     <%= render 'order_items/table', order_items: @order.order_items %>
 
+    <hr>
+    <p><strong>
+      total:
+      <span class="float-right"><%= currency(@finished_order.subtotal) %></span>
+    </strong></p>
+
     <br>
     <h3>client:</h3>
     <p><%= @order.address.name %>, <%= link_to @order.address.email, "mailto:#{@order.address.email}", target: :blank %></p>
