@@ -1,0 +1,46 @@
+.garment-container {
+  .images {
+    height: 50%;
+    flex-grow: 1;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    .scroll {
+      position: relative;
+      width: 20px;
+      height: 100%;
+
+      display: inline-block;
+
+      background: $white;
+      border-left: 1px solid $black;
+      border-right: 1px solid $black;
+
+      span {
+        position: absolute;
+        left: 0;
+        right: 0;
+
+        display: inline-block;
+
+        color: $black;
+        line-height: 20px;
+      }
+
+      &.scroll-left span {
+        bottom: 0;
+        transform: rotate(-90deg);
+      }
+
+      &.scroll-right span {
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+
+    img {
+      display: inline-block;
+    }
+  }
+}

@@ -1,19 +1,30 @@
 <% content_for(:title) do %><%= @garment.name %> ~ <%= @garment.category.name %><% end %>
 
-<div class="container">
-  <div class="header" style="padding-top: 50px">
-    <div class="col-12 col-sm-6" style="margin-bottom: 16px; padding-right: 16px">
-      <h1 class="no-margin"><%= @garment.name %></h1>
-      <p><%= @garment.description %></p>
+<div class="garment-container container full-height">
+  <div class="flex full-height flex-column">
+    <div class="header" style="padding-top: 40px">
+      <div class="col-12 col-sm-6" style="margin-bottom: 16px; padding-right: 16px">
+        <h1 class="no-margin"><%= @garment.name %></h1>
+        <p><%= @garment.description %></p>
+      </div>
+      <div class="col-12 col-sm-6" style="margin-bottom: 16px">
+        <%= render 'garments/pricetag', garment: @garment %>
+      </div>
     </div>
-    <div class="col-12 col-sm-6" style="margin-bottom: 16px">
-      <%= render 'garments/pricetag', garment: @garment %>
-    </div>
-  </div>
 
-  <% @garment.images.each do |image| %>
-    <div class="col-12 col-md-12">
-      <%= image_tag image, width: '100%', height: 'auto' %>
+    <div class="images">
+      <div class="scroll scroll-left">
+        <span>&nbsp;&#x2304; scroll <%= ("&#x2304; " * 40).html_safe %></span>
+      </div>
+
+      <% @garment.images.each do |image| %>
+        <%= image_tag image, width: 'auto', height: '100%' %>
+      <% end %>
+
+      <div class="scroll scroll-right">
+        <span>&nbsp;&#x2304; scroll <%= ("&#x2304; " * 40).html_safe %></span>
+      </div>
     </div>
-  <% end %>
+
+  </div>
 </div>
