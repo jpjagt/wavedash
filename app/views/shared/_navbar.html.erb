@@ -7,7 +7,9 @@
         <% path = send("admin_#{page}_path") %>
         <%= line_to page, path, class: cp(path) %> |
       <% end %>
-      <em>waveadmin v1.0</em>
+      <%= line_to admin_root_path do %>
+        <em>waveadmin v1.0</em>
+      <% end %>
     <% else %>
       <% Category.all.each do |category| %>
         <% path = category_path(category.name) %>

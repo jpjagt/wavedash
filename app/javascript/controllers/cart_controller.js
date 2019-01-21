@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [ "subtotal" ]
 
   update_subtotal = (amount) => {
-    const subtotal = parseInt(this.subtotalTarget.innerText.slice(1)) + amount;
+    const subtotal = parseFloat(this.subtotalTarget.innerText.slice(1)) + amount;
     this.subtotalTarget.innerText = `€${subtotal.toFixed(2)}`
   }
 

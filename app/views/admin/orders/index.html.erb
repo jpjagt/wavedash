@@ -3,6 +3,12 @@
 <div class="flex flex-center full-height">
   <%= render 'shared/postcard', column_classes: "full-height" do %>
     <h1>all orders</h1>
+    <% unless params[:statuses] == "all" %>
+      <%= link_to statuses: :all do %>
+        <em>actually all orders</em>
+      <% end %>
+      <br>
+    <% end %>
     <br>
 
     <p>click an id to view specific order information.</p>

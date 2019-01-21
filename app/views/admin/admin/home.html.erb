@@ -1,0 +1,15 @@
+<% content_for(:title) do %>wavedashboard ~ waveadmin<% end %>
+
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard' do %>
+    <h1>wavedashboard</h1>
+    <p><em>waveadmin v1.0</em></p>
+    <br>
+
+    <ul style="list-style: initial">
+      <% %w[orders garments].each do |action| %>
+        <li><%= line_to "view #{action}", send("admin_#{action}_path") %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

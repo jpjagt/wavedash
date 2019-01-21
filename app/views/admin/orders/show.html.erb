@@ -11,19 +11,21 @@
     <hr>
     <p><strong>
       total:
-      <span class="float-right"><%= currency(@finished_order.subtotal) %></span>
+      <span class="float-right"><%= currency(@order.subtotal) %></span>
     </strong></p>
 
-    <br>
-    <h3>client:</h3>
-    <p><%= @order.address.name %>, <%= link_to @order.address.email, "mailto:#{@order.address.email}", target: :blank %></p>
+    <% if @order.valid_address? %>
+      <br>
+      <h3>client:</h3>
+      <p><%= @order.address.name %>, <%= link_to @order.address.email, "mailto:#{@order.address.email}", target: :blank %></p>
 
-    <br>
-    <h3>address:</h3>
-    <p>
-      <% %w[street postal_code city province country].each do |attribute| %>
-        <%= @order.address.send(attribute) %><br>
-      <% end %>
-    </p>
+      <br>
+      <h3>address:</h3>
+      <p>
+        <% %w[street postal_code city province country].each do |attribute| %>
+          <%= @order.address.send(attribute) %><br>
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
 </div>
