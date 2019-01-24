@@ -9,6 +9,10 @@ class GarmentsController < ApplicationController
   def add
     quantity = params[:quantity] || 1
 
+    # we'll start using the order now, so persist in DB
+    @order.save
+    session[:order_id] = @order.id
+
     added, item_quantity = @order.add(@garment, params[:size], quantity)
     render json: { added: added, item_quantity: item_quantity }
   end

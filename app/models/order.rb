@@ -64,8 +64,7 @@ class Order < ApplicationRecord
       return order unless order.paid?
     end
 
-    # create a new order
-    return Order.create
+    return self.new
   end
 
   # statistical methods
