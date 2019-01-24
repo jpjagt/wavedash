@@ -3,7 +3,7 @@ class Admin::OrdersController < Admin::BaseController
   before_action :set_statuses, only: [:index]
 
   def index
-    @orders = Order.all.select { |o| @statuses.include?(o.status) }.sort_by(&:status)
+    @orders = Order.includes(:status).where(statuses: { text: @statuses }).order(:status_id)
   end
 
   def show
@@ -16,11 +16,12 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def set_statuses
-    @statuses = ["address entered", "paid"]
+    @statuses = ["paid", "delivering", "completed"]
 
     if params.has_key?(:statuses)
       if params[:statuses] == "all"
         @statuses << "browsing"
+        @statuses << "address entered"
       else
         @statuses = params[:statuses].split(",")
       end

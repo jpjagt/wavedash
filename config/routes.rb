@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :garments, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :orders, only: [:index, :show]
+    resources :orders_statuses, only: [:update]
 
     root to: 'admin#home'
   end
