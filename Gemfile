@@ -23,6 +23,8 @@ gem 'stripe'
 
 gem 'browser'
 
+gem "aws-sdk-s3", require: false
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'rails_real_favicon'
