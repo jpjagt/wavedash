@@ -24,7 +24,6 @@ class Admin::GarmentsController < Admin::BaseController
   end
 
   def update
-    byebug
     if @garment.update(garment_params)
       redirect_to get_garment_path(@garment)
     else
