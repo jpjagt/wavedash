@@ -11,7 +11,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.id, admin_order_path(order) %></td>
-        <td><%= order.status %></td>
+        <td><%= order.status.text %></td>
         <td><%= order.quantity %></td>
       </tr>
     <% end %>

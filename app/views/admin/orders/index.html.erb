@@ -8,6 +8,11 @@
         <em>actually all orders</em>
       <% end %>
       <br>
+    <% else %>
+      <%= link_to params: {} do %>
+        <em>nvm, just the relevant orders</em>
+      <% end %>
+      <br>
     <% end %>
     <br>
 

@@ -4,7 +4,13 @@ class Order < ApplicationRecord
 
   has_one :address, dependent: :destroy
 
+  belongs_to :status
+
   scope :paid, -> { where.not(paid_at: nil) }
+
+  validates :status, presence: true
+
+  before_validation :set_status, on: :create
 
   def add(garment, size, quantity = 1)
     return false, nil if status == "paid"
@@ -18,17 +24,6 @@ class Order < ApplicationRecord
     end
 
     return persisted, item.quantity
-  end
-
-  def status
-    case
-    when paid?
-      "paid"
-    when !address.nil?
-      "address entered"
-    else
-      "browsing"
-    end
   end
 
   def quantity
@@ -59,6 +54,7 @@ class Order < ApplicationRecord
 
   def mark_as_paid!
     self.paid_at = DateTime.now
+    self.status = Status.find_by_text("paid")
     save
   end
 
@@ -87,5 +83,11 @@ class Order < ApplicationRecord
 
   def self.deobfuscate_id(id)
     id * ENV['OBFUSCATOR_MI'].to_i % 1000000
+  end
+
+  private
+
+  def set_status
+    self.status = Status.find_by_text("browsing")
   end
 end

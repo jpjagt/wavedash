@@ -13,4 +13,28 @@ categories = [
   }
 ]
 
-Category.create(categories)
+categories.each do |category|
+  Category.create(category) unless Category.exists?(name: category[:name])
+end
+
+statuses = [
+  {
+    text: "browsing"
+  },
+  {
+    text: "address entered"
+  },
+  {
+    text: "paid"
+  },
+  {
+    text: "delivering"
+  },
+  {
+    text: "completed"
+  },
+]
+
+statuses.each do |status|
+  Status.create(status) unless Status.exists?(text: status[:text])
+end
