@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :garments, only: [:index, :new, :create, :edit, :update, :destroy]
+    get 'garment_images_controller/destroy'
+  end
+  namespace :admin do
+    resources :garments, only: [:index, :new, :create, :edit, :update, :destroy] do
+      resources :images, only: [:index, :destroy], controller: 'garment_images'
+    end
+
     resources :orders, only: [:index, :show]
     resources :orders_statuses, only: [:update]
 

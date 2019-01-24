@@ -1,0 +1,17 @@
+<% content_for(:title) do %>images of <%= @garment.name %> ~ waveadmin<% end %>
+
+<div class="flex flex-center full-height">
+  <%= render 'shared/postcard', column_classes: "full-height" do %>
+    <h1>images of <%= @garment.name %></h1>
+    <br>
+
+    <% @images.each do |image| %>
+      <div class="col-6 card">
+        <%= image_tag image, width: '100%', height: 'auto' %>
+        <%= link_to "remove & delete", admin_garment_image_path(@garment.id, image.id), method: :delete,
+            data: { confirm: "are you sure you want to delete this image?" }
+        %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -7,7 +7,10 @@
   <br>
   <%= form.association :category %>
   <br>
+  <label>change thumbnail</label>
   <%= form.file_field :thumbnail %>
+
+  <label>add <strong>*new*</strong> images</label>
   <%= form.file_field :images, multiple: true %>
   <br>
   <%= form.submit "submit", class: 'button' %>
