@@ -16,7 +16,10 @@
         <td><%= @units_sold[garment.id] || 0 %></td>
         <td>
           <%= link_to "edit", edit_admin_garment_path(garment) %>,
-          <%= link_to "delete", admin_garment_path(garment), method: :delete %>
+          <%= link_to "manage images", admin_garment_images_path(garment) %>,
+          <%= link_to "delete", admin_garment_path(garment), method: :delete,
+              data: { confirm: "are you sure you want to delete #{garment.name}?" }
+          %>
         </td>
       </tr>
     <% end %>
