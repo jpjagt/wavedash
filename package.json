@@ -8,6 +8,8 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "jsbezier": "^0.9.5",
+    "mathjs": "^7.0.2",
     "stimulus": "^1.1.0",
     "stimulus-tabs": "^1.0.4"
   },

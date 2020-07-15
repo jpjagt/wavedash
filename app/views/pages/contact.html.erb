@@ -1,13 +1,11 @@
-<div class="flex flex-center full-height clouds">
-  <%= render 'shared/postcard' do %>
-    <h1>contact us</h1>
+<%= render 'shared/cube' do %>
+  <h1>contact us</h1>
 
-    <p>
-      send an email to ask a question<br>
-      or say <%= link_to ApplicationHelper::EMAIL, "mailto:#{ApplicationHelper::EMAIL}", target: :blank %>
-    </p>
+  <p>
+    send an email to ask a question<br>
+    or say <%= link_to ApplicationHelper::EMAIL, "mailto:#{ApplicationHelper::EMAIL}", target: :blank %>
+  </p>
 
-    <br>
-    <%= line_to "back", root_path %>
-  <% end %>
-</div>
+  <br>
+  <%= line_to "back", root_path %>
+<% end %>

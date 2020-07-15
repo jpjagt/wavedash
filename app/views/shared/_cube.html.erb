@@ -1,0 +1,25 @@
+<div class="flex flex-center full-height clouds"
+  data-controller="cube"
+  data-target="cube.cubeContainer"
+  id="cube-container"
+  data-action="
+    turbolinks:render@window->cube#onRender
+    turbolinks:before-visit@window->cube#onBeforeVisit
+  "
+>
+  <%= render 'shared/postcard', postcard_classes: 'p-0' do %>
+    <div id="cube">
+      <div class="side front">
+        <div class="side-inner" data-target="cube.frontSide">
+          <%= yield %>
+        </div>
+      </div>
+
+      <div class="side back"><div class="side-inner"></div></div>
+      <div class="side left"><div class="side-inner"></div></div>
+      <div class="side right"><div class="side-inner"></div></div>
+      <div class="side bottom"><div class="side-inner"></div></div>
+      <div class="side top"><div class="side-inner"></div></div>
+    </div>
+  <% end %>
+</div>

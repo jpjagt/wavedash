@@ -1,13 +1,11 @@
-<div class="flex flex-center full-height clouds">
-  <%= render 'shared/postcard' do %>
-    <h1 class="wavedash" id="title"><%= wavedashize %></h1>
-    <%= render 'categories/list', categories: @categories %>
+<%= render 'shared/cube' do %>
+  <h1 class="wavedash" data-action="click->cube#rotate" id="title"><%= wavedashize %></h1>
+  <%= render 'categories/list', categories: @categories %>
 
-    <ul class="footnote">
-      <li><%= render 'shared/link_to_cart' %></li>
-      <li><%= line_to "contact", contact_path %></li>
-    </ul>
+  <ul class="footnote">
+    <li><%= render 'shared/link_to_cart' %></li>
+    <li><%= line_to "contact", contact_path %></li>
+  </ul>
 
-    <%= image_tag 'rose.jpg', class: 'rose' %>
-  <% end %>
-</div>
+  <%= image_tag 'rose.jpg', class: 'rose' %>
+<% end %>

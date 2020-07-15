@@ -1,0 +1,84 @@
+$total-duration: 1200ms;
+$swell-duration: 300ms;
+$tail-duration: 0ms;
+$swell-easing: cubic-bezier(0.45, 0, 0.55, 1);
+$rotate-easing: cubic-bezier(0.85, 0, 0.15, 1); // cubic-bezier(0.45, 0, 0.55, 1);
+$rotate-scale: 0.6 - 0.025;
+#cube-container {
+  #postcard {
+    transition: transform $swell-duration $swell-easing;
+    transform: none;
+    padding: 0;
+  }
+  .side-inner {
+    transition: transform $swell-duration $swell-easing;
+    transform: none;
+  }
+  .side {
+
+  }
+
+  &.rotating {
+    #postcard {
+      background: black;
+      transform: scale(1.05);
+    }
+
+    .side-inner {
+      transform: scale($rotate-scale);
+    }
+
+    @each $side in ('front', 'back', 'left', 'right', 'top', 'bottom') {
+      .side.#{$side} {
+        animation: $side forwards #{$total-duration - $swell-duration - $tail-duration} $swell-duration $rotate-easing;
+      }
+    }
+
+    .side {
+      transition: background 0ms #{$swell-duration + 50ms};
+    }
+    .side.front { background: white; }
+    .side.back { background: blue; }
+    .side.left { background: green; }
+    .side.right { background: orange; }
+    .side.top { background: bisque; }
+    .side.bottom { background: purple; }
+  }
+}
+
+#cube {
+  background: black;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+
+  .side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+
+    .side-inner {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+
+      padding: 5%;
+    }
+  }
+
+  .side.front { z-index: 10; }
+  .side.front .side-inner { background: white; }
+  .side.back .side-inner { background: blue; }
+  .side.left .side-inner { background: green; }
+  .side.right .side-inner { background: orange; }
+  .side.top .side-inner { background: bisque; }
+  .side.bottom .side-inner { background: purple; }
+
+  .side {
+    background: black;
+  }
+}
