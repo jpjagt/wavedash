@@ -1,7 +1,7 @@
 import * as math from 'mathjs'
 import { jsBezier } from 'jsbezier'
 
-import { addKeyFrames } from './stylesheet'
+import { addKeyFrames, logRulesToConsole } from './stylesheet'
 
 // function norm(v) {
 //     return Math.sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
@@ -171,4 +171,5 @@ export const createCubeKeyframes = (rotations=1, padding=0.05) => {
 
     createClipKeyframe(side, points, initialFaces[side], padding)
   })
+  logRulesToConsole()
 }

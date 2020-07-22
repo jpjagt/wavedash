@@ -8,9 +8,11 @@ export default class extends Controller {
   static targets = [ 'cubeContainer', 'frontSide' ]
 
   connect () {
-    if (!window.keyFramesCreated) {
-      createCubeKeyframes()
-      window.keyFramesCreated = true
+    if (false && process.env.NODE_ENV === 'development') {
+      if (!window.keyFramesCreated) {
+        createCubeKeyframes()
+        window.keyFramesCreated = true
+      }
     }
   }
 
@@ -33,9 +35,10 @@ export default class extends Controller {
     const frontSide = this.getFrontSide()
     if (frontSide) {
       const content = frontSide.innerHTML
-      console.log({ content })
       frontSide.innerHTML = oldContent
-      this.rotate()
+      setTimeout(() => {
+        this.rotate()
+      }, 10)
 
       setTimeout(() => {
         frontSide.innerHTML = content

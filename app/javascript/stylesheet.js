@@ -2,6 +2,10 @@ var stylesheet = document.createElement('style');
 var addKeyFrames = null;
 document.head.appendChild( stylesheet );
 
+export const logRulesToConsole = () => {
+  console.log([...stylesheet.sheet.cssRules].map(r => r.cssText).join('\n'))
+}
+
 if (CSS && CSS.supports && CSS.supports('animation: name')) {
     // we can safely assume that the browser supports unprefixed version.
     addKeyFrames = function(name, frames){

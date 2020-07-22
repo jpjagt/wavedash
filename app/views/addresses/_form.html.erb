@@ -1,9 +1,7 @@
 <%= simple_form_for @address, url: checkout_path, method: :post do |form| %>
-  <%= form.input :first_name %>
-  <%= form.input :last_name %>
   <%= form.input :email %>
   <br>
-  <%= form.input :street %>
+  <%= form.input :street, label: 'street, number' %>
   <%= form.input :postal_code %>
   <%= form.input :city %>
   <%= form.input :province %>
