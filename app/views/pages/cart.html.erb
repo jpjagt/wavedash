@@ -1,27 +1,25 @@
 <% content_for(:title) do %>your cart<% end %>
 
-<div class="flex flex-center full-height">
-  <%= render 'shared/postcard' do %>
-    <h1>your cart (<%= @order.quantity > 0 ? "#{@order.quantity} items" : "empty" %>)</h1>
-    <br>
+<%= render 'shared/cube', bg: 'dunes' do %>
+  <h1>your cart (<%= @order.quantity > 0 ? "#{@order.quantity} items" : "empty" %>)</h1>
+  <br>
 
-    <div data-controller="cart" id="cart">
-      <% @order.order_items.each do |item| %>
-        <%= render 'pages/cartrow', item: item %>
-      <% end %>
+  <div data-controller="cart" id="cart">
+    <% @order.order_items.each do |item| %>
+      <%= render 'pages/cartrow', item: item %>
+    <% end %>
 
-      <hr>
+    <hr>
 
-      <p><strong>
-        total:
-        <span class="float-right" data-target="cart.subtotal"><%= currency(@order.subtotal) %></span>
-      </strong></p>
-      <% unless @order.quantity > 0 %>
-        <p class="text-right"><em>(duhh, it's empty)</em></p>
-      <% else %>
-        <br>
-        <p class="text-right"><%= line_to "checkout", checkout_path %></p>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+    <p><strong>
+      total:
+      <span class="float-right" data-target="cart.subtotal"><%= currency(@order.subtotal) %></span>
+    </strong></p>
+    <% unless @order.quantity > 0 %>
+      <p class="text-right"><em>(duhh, it's empty)</em></p>
+    <% else %>
+      <br>
+      <p class="text-right"><%= line_to "checkout", checkout_path %></p>
+    <% end %>
+  </div>
+<% end %>

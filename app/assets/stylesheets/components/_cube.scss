@@ -1,12 +1,14 @@
 @import './cube_keyframes';
 
-$total-duration: 1200ms;
+$total-duration: 1400ms;
 $swell-duration: 300ms;
 $tail-duration: 0ms;
 $swell-easing: cubic-bezier(0.45, 0, 0.55, 1);
 $rotate-easing: cubic-bezier(0.85, 0, 0.15, 1); // cubic-bezier(0.45, 0, 0.55, 1);
 $rotate-scale: 0.6 - 0.025;
 #cube-container {
+  position: relative;
+
   #postcard {
     transition: transform $swell-duration $swell-easing;
     transform: none;
@@ -16,8 +18,21 @@ $rotate-scale: 0.6 - 0.025;
     transition: transform $swell-duration $swell-easing;
     transform: none;
   }
-  .side {
 
+  .cube-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: -2;
+
+    &.disappearing {
+      z-index: -1;
+      animation: bg-disappearance forwards $total-duration;
+      mix-blend-mode: difference;
+    }
   }
 
   &.rotating {
@@ -39,12 +54,8 @@ $rotate-scale: 0.6 - 0.025;
     .side {
       transition: background 0ms #{$swell-duration + 50ms};
     }
-    .side.front { background: white; }
-    .side.back { background: blue; }
-    .side.left { background: green; }
-    .side.right { background: orange; }
-    .side.top { background: bisque; }
-    .side.bottom { background: purple; }
+    // only dynamically define front side for swell effect
+    .side.front { background-color: white; }
   }
 }
 
@@ -72,15 +83,71 @@ $rotate-scale: 0.6 - 0.025;
     }
   }
 
+
+  .side.back { background-color: blue; }
+  .side.left { background-color: green; }
+  .side.right { background-color: orange; }
+  .side.top { background-color: bisque; }
+  .side.bottom { background-color: purple; }
+  .side-inner {
+    background-color: inherit;
+  }
+
   .side.front { z-index: 10; }
   .side.front .side-inner { background: white; }
-  .side.back .side-inner { background: blue; }
-  .side.left .side-inner { background: green; }
-  .side.right .side-inner { background: orange; }
-  .side.top .side-inner { background: bisque; }
-  .side.bottom .side-inner { background: purple; }
+
+  .side.left { @extend .side-snakes; }
+  .side.bottom { @extend .side-diamonds; }
 
   .side {
     background: black;
+  }
+}
+
+@mixin cube-side($name, $color) {
+  .side-#{$name} {
+    background-color: $color;
+    background-image: image-url('sides/#{$name}.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    .side-inner {
+      background: transparent !important;
+    }
+  }
+}
+
+@include cube-side('snakes', #c0b6fd);
+@include cube-side('diamonds', #fd8d6f);
+
+@keyframes bg-disappearance {
+  0% {
+    mix-blend-mode: initial;
+  }
+
+  20% {
+    mix-blend-mode: hue;
+    opacity: 1;
+  }
+
+  60% {
+    mix-blend-mode: hue;
+    opacity: 0.5;
+  }
+
+  80% {
+    mix-blend-mode: hue;
+    opacity: 0.5;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    mix-blend-mode: initial;
+    display: none;
+    visibility: hidden;
   }
 }

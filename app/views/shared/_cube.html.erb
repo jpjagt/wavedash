@@ -1,4 +1,6 @@
-<div class="flex flex-center full-height clouds"
+<% bg ||= 'clouds' %>
+
+<div class="flex flex-center full-height"
   data-controller="cube"
   data-target="cube.cubeContainer"
   id="cube-container"
@@ -7,6 +9,7 @@
     turbolinks:before-visit@window->cube#onBeforeVisit
   "
 >
+  <div class="cube-bg <%= bg %>"></div>
   <%= render 'shared/postcard', postcard_classes: 'p-0' do %>
     <div id="cube">
       <div class="side front">
