@@ -19,29 +19,31 @@ export default class extends Controller {
 
   onRender (event) {
     if (window.previousFrontSide) {
-      this.transitionToNewContent(window.previousFrontSide, window.previousBackground)
+      this.transitionToNewContent(window.previousFrontSide, window.previousBG)
 
       window.previousFrontSide = null
     }
   }
 
   onBeforeVisit (event) {
-    window.previousBackground = this.getCubeBackground().outerHTML.toString()
+    window.previousBG = this.getBG(this.getCubeBackground())
     window.previousFrontSide = this.getFrontSide().innerHTML.toString()
   }
+
+  getBG = (elem) => elem.dataset.bg
 
   getCubeContainer = () => document.querySelector('#cube-container')
   getFrontSide = () => document.querySelector('#cube .front .side-inner')
   getCubeBackground = () => document.querySelector('#cube-container .cube-bg')
 
-  transitionToNewContent (oldContent, oldBackground) {
+  transitionToNewContent (oldContent, oldBG) {
     const frontSide = this.getFrontSide()
     if (frontSide) {
       const content = frontSide.innerHTML
       frontSide.innerHTML = oldContent
+      this.transitionBackground(oldBG)
       setTimeout(() => {
         this.rotate()
-        this.transitionBackground(oldBackground)
       }, 10)
 
       setTimeout(() => {
@@ -50,10 +52,16 @@ export default class extends Controller {
     }
   }
 
-  transitionBackground (oldBackground) {
-    const bgElem = createElementFromHTML(oldBackground)
-    this.getCubeContainer().appendChild(bgElem)
-    bgElem.classList.add('disappearing')
+  transitionBackground (oldBG) {
+    const background = this.getCubeBackground()
+    const newBG = this.getBG(background)
+    const backgroundCL = background.classList
+    backgroundCL.remove(newBG)
+    backgroundCL.add(oldBG, 'changing')
+    setTimeout(() => {
+      backgroundCL.remove(oldBG)
+      backgroundCL.add(newBG)
+    }, 1000)
   }
 
   rotate () {

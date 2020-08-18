@@ -1,3 +1,36 @@
+@mixin util-class($prefix, $property, $value, $breakpoint: null) {
+  $postfix: "";
+  @if $breakpoint {
+    $postfix: "-#{$breakpoint}";
+  }
+
+  $value-title: $value;
+  $value-value: $value;
+  @if type-of($value) == list {
+    $value-title: nth($value, 1);
+    $value-value: nth($value, 2);
+  }
+
+  .#{$prefix}-#{$value-title}#{$postfix} {
+    #{$property}: $value-value;
+  }
+}
+
+@mixin util-classes($prefix, $property, $values) {
+  @each $value in $values {
+    @include util-class($prefix, $property, $value);
+  }
+
+  // loop again to give priority to breakpoint classes
+  @each $value in $values {
+    @each $breakpoint, $v in $breakpoints {
+      @include breakpoint($breakpoint) {
+        @include util-class($prefix, $property, $value, $breakpoint);
+      }
+    }
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -27,8 +60,7 @@ html {
 }
 
 body {
-  // background: rgba(255, 255, 255, 0.99);
-  // background: $white;
+  background: $white;
 
   background-size: auto 300px;
   background-repeat: repeat;
@@ -46,6 +78,7 @@ h1, h2, h3, h4, h5 {
   font-family: $header;
 
   margin-top: 0;
+  margin-bottom: 0;
   line-height: 1;
 }
 
@@ -53,7 +86,7 @@ h3 {
   margin-bottom: 0;
 }
 
-p, span, ul, li, label, input, select, .table {
+p, ul, li, label, input, select, .table {
   color: $black;
   font-family: $sans;
 }
@@ -124,6 +157,12 @@ div {
   clear: both;
 }
 
+.scroll {
+  overflow-y: scroll;
+  height: 100%;
+  padding-right: 20px;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -131,15 +170,7 @@ div {
   text-decoration: underline;
 }
 
-.text-left {
-  text-align: left;
-}
-.text-center {
-  text-align: center;
-}
-.text-right {
-  text-align: right;
-}
+@include util-classes("t", "text-align", left center right justify);
 
 .white { color: $white; }
 .bg-white { background: $white; }

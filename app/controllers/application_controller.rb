@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :set_order
   # before_action :redirect_to_root
 
+  def raise_not_found
+    raise ActionController::RoutingError.new('not found')
+  end
+
   private
 
   def redirect_to_root

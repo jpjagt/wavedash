@@ -18,6 +18,10 @@ class Garment < ApplicationRecord
     self.name.parameterize
   end
 
+  def to_param
+    slug
+  end
+
   def self.find_by_slug(slug)
     self.find_by(name: slug.gsub(/-/, ' '))
   end

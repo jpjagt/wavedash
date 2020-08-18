@@ -1,0 +1,10 @@
+$breakpoint-xxl: 1400px;
+
+$breakpoints: (
+  m: $breakpoint-m,
+  l: $breakpoint-l,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+);
+
+$easeInOutQuint: cubic-bezier(0.83, 0, 0.17, 1);

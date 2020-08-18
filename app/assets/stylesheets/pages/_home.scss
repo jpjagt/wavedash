@@ -10,6 +10,31 @@
   @media (min-width: 860px) {
     font-size: 4rem;
   }
+
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    transition: all 500ms $easeInOutQuint;
+    transition-property: top, left;
+    @for $i from 1 to 6 {
+      &:nth-child(#{$i}) {
+        color: nth($brand-colors, $i);
+        top: $i * 0px;
+        left: $i * 0px;
+        z-index: -1 * $i;
+      }
+    }
+
+  }
+}
+@for $i from 1 to 6 {
+  #postcard #title:hover span:nth-child(#{$i}) {
+    top: $i * 2px;
+    left: $i * 2px;
+  }
 }
 
 #postcard .rose {
@@ -18,4 +43,92 @@
   position: absolute;
   bottom: 0;
   left: 2rem;
+}
+
+#home-intro {
+  max-width: 240px;
+  float: right;
+  margin-top: 1rem;
+
+  @include breakpoint(m) {
+    max-width: 280px;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  p {
+    text-align: justify;
+  }
+}
+
+#home-sock {
+  width: 40%;
+  height: auto;
+
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+}
+
+#home-grid {
+  display: grid;
+  grid-gap: 1px;
+
+  width: 100%;
+  height: 100%;
+
+  $children: title, story, collection, practical, none, none2;
+  @each $c in $children {
+    .#{$c} {
+      grid-area: #{$c};
+    }
+  }
+
+  .button {
+    width: 100%;
+    height: 100%;
+  }
+
+  .home-grid-padded {
+    padding: 0.5rem;
+
+    @include breakpoint(m) {
+      padding: 1rem;
+    }
+  }
+
+  // .story {
+  //   background: bg($pink);
+  // }
+  // .collection {
+  //   background: bg($blue);
+  // }
+  .practical {
+    background: bg($lavender-blue);
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    text-align: right;
+  }
+  .none2 {
+    background: bg($languid-lavender);
+  }
+  .none {
+    background: bg($baby-blue);
+  }
+
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    "title title title none none"
+    "none2 none2 collection collection collection"
+    "none2 none2 collection collection collection"
+    "none2 none2 collection collection collection"
+    "story story story practical practical"
+    "story story story practical practical"
+    "story story story practical practical"
+  ;
 }

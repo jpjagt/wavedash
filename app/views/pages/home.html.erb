@@ -1,11 +1,36 @@
+<% h1 = wavedashize %>
+
 <%= render 'shared/cube' do %>
-  <h1 class="wavedash" data-action="click->cube#rotate" id="title"><%= wavedashize %></h1>
-  <%= render 'categories/list', categories: @categories %>
+  <div id="home-grid">
+    <div class="none"></div>
+    <div class="none2"></div>
 
-  <ul class="footnote">
-    <li><%= render 'shared/link_to_cart' %></li>
-    <li><%= line_to "contact", contact_path %></li>
-  </ul>
+    <div class="title">
+      <h1 class="wavedash" data-action="click->cube#rotate" id="title">
+        <%= h1 %>
+        <span><%= h1 %></span>
+        <span><%= h1 %></span>
+        <span><%= h1 %></span>
+        <span><%= h1 %></span>
+        <span><%= h1 %></span>
+      </h1>
+    </div>
 
-  <%= image_tag 'rose.jpg', class: 'rose' %>
+    <%= render 'shared/button', href: us_path, classes: "home-grid-padded story" do %>
+      <h2><%= letterize('our story') %></h2>
+      <p><%= letterize('why wavedash?') %></p>
+    <% end %>
+
+    <%= render 'shared/button', href: category_path('socks'), classes: "home-grid-padded collection button-blue" do %>
+      <h2><%= letterize('our socks') %></h2>
+      <p><%= letterize('browse our collection') %></p>
+    <% end %>
+
+    <div class="home-grid-padded practical">
+      <ul>
+        <li><%= render 'shared/link_to_cart' %></li>
+        <li><%= line_to "contact", contact_path %></li>
+      </ul>
+    </div>
+  </div>
 <% end %>

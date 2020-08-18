@@ -1,9 +1,40 @@
+$red: #ff0000;
+
+$pink-dark: #E95873;
+$pink: #ffd5dd;
+$languid-lavender: #dfcce6;
+$lavender-blue: #bec2ee;
+$baby-blue: #9db8f7;
+$blue: #7caeff;
+$brand-colors: $pink, $languid-lavender, $lavender-blue, $baby-blue, $blue;
+
 $grey: #c6c6c6;
 $lightgrey: #e6e6e6;
+$darkgrey: #787878;
+$basalt: #242434;
 
-$red: #ff0000;
 
 // $white: #000;
 // $black: #fff;
 $white: #fff;
 $black: #000;
+
+$colors: (
+  white: $white,
+  black: $black,
+  pink-dark: $pink-dark,
+  pink: $pink,
+  languid-lavender: $languid-lavender,
+  lavender-blue: $lavender-blue,
+  baby-blue: $baby-blue,
+  blue: $blue,
+  grey: $grey,
+  lightgrey: $lightgrey,
+  darkgrey: $darkgrey,
+  basalt: $basalt,
+  red: $red,
+);
+
+@function bg($color) {
+  @return rgba($color, 0.4);
+}

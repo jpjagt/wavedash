@@ -80,8 +80,6 @@ $postcard-padding-vertical: 5%;
   h1 {
     color: $black;
 
-    margin: 0;
-
     font-size: 1.6rem;
 
     @media (max-width: 500px) {
@@ -91,10 +89,6 @@ $postcard-padding-vertical: 5%;
     @media (min-width: 860px) {
       font-size: 2rem;
     }
-  }
-
-  .categories {
-    text-align: right;
   }
 
   .footnote {

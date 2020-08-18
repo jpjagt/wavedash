@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@getbase/base@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@getbase/base/-/base-5.2.0.tgz#5b6629a7789661f0a5546436b064eee15cf5f7b4"
+  integrity sha512-QEGvFqn4n2n3sEmNiB9chp3bUVfLiaACLIPh+BOwZjyBuvq2gkGktEBn8AdNcyOCZbhRsnvJMqU0hVnHKdF3Kw==
+
 "@rails/webpacker@3.5":
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-3.5.5.tgz#8911c66bcefc8bc6b91270e92f0d39e3c2d43116"

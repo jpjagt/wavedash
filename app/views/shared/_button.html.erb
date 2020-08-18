@@ -1,0 +1,19 @@
+<% classes ||= "" %>
+<div class="button-wrapper <%= classes %>">
+  <svg xmlns="http://www.w3.org/2000/svg" class="button-svg-rect">
+    <rect width="100%" x="0px" y="0px"></rect>
+  </svg>
+
+  <%= render 'svg/plus', classes: 'top-left' %>
+  <%= render 'svg/plus', classes: 'bottom-right' %>
+
+  <% if block_given? && !yield.blank? %>
+    <%= link_to href, class: 'button' do %>
+      <%= yield %>
+    <% end %>
+  <% else %>
+    <%= link_to href, class: 'button' do %>
+      <%= letterize(text) %>
+    <% end %>
+  <% end %>
+</div>

@@ -16,10 +16,10 @@
       <span class="float-right" data-target="cart.subtotal"><%= currency(@order.subtotal) %></span>
     </strong></p>
     <% unless @order.quantity > 0 %>
-      <p class="text-right"><em>(duhh, it's empty)</em></p>
+      <p class="t-right"><em>(duhh, it's empty)</em></p>
     <% else %>
       <br>
-      <p class="text-right"><%= line_to "checkout", checkout_path %></p>
+      <p class="t-right"><%= line_to "checkout", checkout_path %></p>
     <% end %>
   </div>
 <% end %>

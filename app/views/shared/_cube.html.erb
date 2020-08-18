@@ -9,7 +9,7 @@
     turbolinks:before-visit@window->cube#onBeforeVisit
   "
 >
-  <div class="cube-bg <%= bg %>"></div>
+  <div class="cube-bg <%= bg %>" data-bg="<%= bg %>"></div>
   <%= render 'shared/postcard', postcard_classes: 'p-0' do %>
     <div id="cube">
       <div class="side front">

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'garment_images_controller/destroy'
-  end
-  namespace :admin do
     resources :garments, only: [:index, :new, :create, :edit, :update, :destroy] do
       resources :images, only: [:index, :destroy], controller: 'garment_images'
     end
@@ -13,8 +10,10 @@ Rails.application.routes.draw do
     root to: 'admin#home'
   end
 
-  get 'label', to: 'pages#label', as: :label
-  get 'contact', to: 'pages#contact', as: :contact
+  get 'label', to: 'pages#label'
+  get 'contact', to: 'pages#contact'
+  get 'us', to: 'pages#us'
+  get 'about', to: redirect('us', status: 302)
 
   # cart
   get 'cart', to: 'pages#cart', as: :cart

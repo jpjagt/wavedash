@@ -11,9 +11,9 @@ module ApplicationHelper
 
   def wavedashize(name = "wavedash")
     case rand(100)
-    when 0..3
+    when 0..1
       %(~#{name}-)
-    when 5..6
+    when 5
       %(/#{name}/)
     when 8
       %([#{name}])
@@ -22,6 +22,10 @@ module ApplicationHelper
     else
       name
     end
+  end
+
+  def letterize(text)
+    text.split('').map { |c| %(<span class="letter">#{c}</span>) }.join('').html_safe
   end
 
   def currency(amount)

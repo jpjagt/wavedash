@@ -1,0 +1,73 @@
+@mixin space-attr($attribute, $amount, $modifiers) {
+  @if length($modifiers) > 0 {
+    @each $modifier in $modifiers {
+      #{$attribute}-#{$modifier}: $amount + rem;
+    }
+  } @else {
+    #{$attribute}: $amount + rem;
+  }
+}
+
+@mixin space($prefix, $attribute, $tag, $amount, $modifiers...) {
+  .#{$prefix}-#{$tag} {
+    @include space-attr($attribute, $amount, $modifiers);
+  }
+}
+
+@mixin space-breakpoints($prefix, $attribute, $tag, $amount, $modifiers...) {
+  @each $brkpnt, $width in $breakpoints {
+    @include breakpoint($brkpnt) {
+      .#{$prefix}-#{$tag}-#{$brkpnt} {
+        @include space-attr($attribute, $amount, $modifiers);
+      }
+    }
+  }
+}
+
+@mixin spacing($prefix, $attribute, $tag, $amount) {
+  @include space($prefix, $attribute, $tag, $amount);
+  @include space($prefix + x, $attribute, $tag, $amount, left, right);
+  @include space($prefix + y, $attribute, $tag, $amount, top, bottom);
+  @include space($prefix + l, $attribute, $tag, $amount, left);
+  @include space($prefix + r, $attribute, $tag, $amount, right);
+  @include space($prefix + t, $attribute, $tag, $amount, top);
+  @include space($prefix + b, $attribute, $tag, $amount, bottom);
+}
+
+@mixin spacing-breakpoints($prefix, $attribute, $tag, $amount) {
+  @include space-breakpoints($prefix, $attribute, $tag, $amount);
+  @include space-breakpoints($prefix + x, $attribute, $tag, $amount, left, right);
+  @include space-breakpoints($prefix + y, $attribute, $tag, $amount, top, bottom);
+  @include space-breakpoints($prefix + l, $attribute, $tag, $amount, left);
+  @include space-breakpoints($prefix + r, $attribute, $tag, $amount, right);
+  @include space-breakpoints($prefix + t, $attribute, $tag, $amount, top);
+  @include space-breakpoints($prefix + b, $attribute, $tag, $amount, bottom);
+}
+
+@mixin spacings($prefix, $attribute, $spacings) {
+  @for $i from 0 through $spacings {
+    @include spacing($prefix, $attribute, $i, $i);
+  }
+
+  @for $i from 0 through $spacings {
+    // do breakpoints after to ensure their priority
+    @include spacing-breakpoints($prefix, $attribute, $i, $i);
+  }
+}
+
+@include spacings(p, padding, 25);
+@include spacings(m, margin, 25);
+
+@include spacing(p, padding, '0_5', 0.5);
+@include spacing-breakpoints(p, padding, '0_5', 0.5);
+@include spacing(m, margin, '0_5', 0.5);
+@include spacing-breakpoints(m, margin, '0_5', 0.5);
+
+.pt-navbar {
+  padding-top: $navbar-height;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
