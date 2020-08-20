@@ -1,0 +1,40 @@
+<% content_for(:title) do %><%= 'socks' %><% end %>
+
+<%= render 'shared/cube' do %>
+  <div class="d-flex direction-column h-100">
+    <h1 class="mb-1">our socks</h1>
+
+    <% if true %>
+      <p style="max-width: 320px;">
+        we are working very hard on getting our socks ready for you! but right now, we cannot show you anything just yet...<br />
+        if you feel like staying tuned, you can follow our <%= line_to 'instagram', 'https://instagram.com/wavedashed', class: 'bg-blue' %>.<br />
+      </p>
+
+      <%= render 'shared/button', classes: 'button-lavender-blue d-inline-block mt-2', text: 'or else, read what we are about (=', href: story_path %>
+    <% else %>
+      <div class="item-grow d-flex direction-row">
+        <%= render 'shared/button', classes: 'button-white item-grow basis-0', href: get_garment_path(@pink) do %>
+          <div class="d-flex direction-column h-100 w-100 align-stretch">
+            <div class="pb-0_5">
+              <h4><%= letterize('televeyeze pink') %></h4>
+              <p><%= letterize(@pink.description) %></p>
+            </div>
+            <div class="bg item-grow" style="background-image: url(<%= @pink_img %>)">
+            </div>
+          </div>
+        <% end %>
+
+        <%= render 'shared/button', classes: 'button-white item-grow basis-0', href: get_garment_path(@blue) do %>
+          <div class="d-flex direction-column h-100 w-100 align-stretch">
+            <div class="pb-0_5">
+              <h4><%= letterize('televeyeze blue') %></h4>
+              <p><%= letterize(@blue.description) %></p>
+            </div>
+            <div class="bg item-grow" style="background-image: url(<%= @blue_img %>)">
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

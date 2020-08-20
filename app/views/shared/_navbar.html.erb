@@ -11,10 +11,8 @@
         <em>waveadmin v1.0</em>
       <% end %>
     <% else %>
-      <% Category.all.each do |category| %>
-        <% path = category_path(category.name) %>
-        <%= line_to category.name, path, class: cp(path) %> |
-      <% end %>
+      <%= line_to 'our story', story_path, class: cp(story_path) %> |
+      <%= line_to 'socks', category_path('socks'), class: cp(category_path('socks')) %> |
 
       <%= render 'shared/link_to_cart' %>
     <% end %>

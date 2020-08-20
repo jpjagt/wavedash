@@ -1,0 +1,14 @@
+@mixin background() {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-origin: border-box;
+
+  @media (max-width: $breakpoint-m) {
+    background-attachment: scroll;
+  }
+}
+
+.bg {
+  @include background();
+}

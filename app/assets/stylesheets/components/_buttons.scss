@@ -58,6 +58,13 @@
     z-index: 2;
 
     background: transparent;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  &.p-0 .button {
+    padding: 0;
   }
 }
 .button-svg-rect {

@@ -1,7 +1,7 @@
 <% h1 = wavedashize %>
 
 <%= render 'shared/cube' do %>
-  <div id="home-grid">
+  <div id="home-collage" class="collage">
     <div class="none"></div>
     <div class="none2"></div>
 
@@ -16,21 +16,23 @@
       </h1>
     </div>
 
-    <%= render 'shared/button', href: us_path, classes: "home-grid-padded story" do %>
+    <%= render 'shared/button', href: story_path, classes: "collage-padded story" do %>
       <h2><%= letterize('our story') %></h2>
       <p><%= letterize('why wavedash?') %></p>
     <% end %>
 
-    <%= render 'shared/button', href: category_path('socks'), classes: "home-grid-padded collection button-blue" do %>
+    <%= render 'shared/button', href: category_path('socks'), classes: "collage-padded collection button-blue" do %>
       <h2><%= letterize('our socks') %></h2>
       <p><%= letterize('browse our collection') %></p>
     <% end %>
 
-    <div class="home-grid-padded practical">
+    <div class="collage-padded practical">
       <ul>
         <li><%= render 'shared/link_to_cart' %></li>
         <li><%= line_to "contact", contact_path %></li>
       </ul>
     </div>
+
+    <%= render 'shared/instagram_button' %>
   </div>
 <% end %>

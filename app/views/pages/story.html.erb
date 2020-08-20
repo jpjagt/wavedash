@@ -1,0 +1,72 @@
+<% content_for(:title) do %><%= 'our story' %><% end %>
+
+<%= render 'shared/cube', bg: 'clouds-2' do %>
+  <div class="scroll collage collage-coloured" id="story-collage">
+    <div class="collage-padded title">
+      <h1 class="mb-1">our story</h1>
+    </div>
+
+    <%= render 'shared/button', href: root_path, text: 'back home', classes: "back-home" %>
+
+    <div class="collage-padded hello">
+      <p class="t-justify"><strong>hello, we are <span class="wavedash">wavedash</span>.</strong></p>
+    </div>
+
+    <div class="collage-padded paragraph-1">
+      <p class="t-justify">
+        We collaborate with local artists <!-- <br /> -->
+        to produce socks that we find <!-- <br /> -->
+        comfortable, pretty, & unique. <!-- <br /> -->
+      </p>
+    </div>
+
+    <div class="fill-1"></div>
+
+    <div class="collage-padded paragraph-2">
+      <p class="t-justify">
+        We are on a mission to accomplish <!-- <br /> -->
+        three things that we find important:
+      </p>
+    </div>
+
+    <div class="fill-2"></div>
+
+    <div class="collage-padded paragraph-3">
+      <ol>
+        <li>enable artists to support themselves with what they create.</li>
+        <li>produce clothing that we are proud to wear ourselves.</li>
+        <li>nudge the clothing industry towards a more sustainable future.</li>
+      </ol>
+    </div>
+
+    <div class="collage-padded paragraph-4">
+      <p class="t-justify">
+        And we think we have found <!-- <br /> -->
+        something that works. By asking <!-- <br /> -->
+        local, small artists to create the <!-- <br /> -->
+        designs you find on our clothing, <!-- <br /> -->
+        we have created some of the most <!-- <br /> -->
+        beautiful socks we have seen. <!-- <br /> -->
+        We pay the artist for every <!-- <br /> -->
+        sock (or two) that we sell. And <!-- <br /> -->
+        we work with manufacturers <!-- <br /> -->
+        to locally source textile and thread, <!-- <br /> -->
+        lowering our clothing's carbon footprint. <!-- <br /> -->
+      </p>
+    </div>
+
+    <div class="collage-padded paragraph-5">
+      <p class="t-justify">
+        By purchasing our socks, you directly <!-- <br /> -->
+        support local artists &mdash; and you <!-- <br /> -->
+        don't hurt the environment in doing so.
+      </p>
+    </div>
+
+    <%= render 'shared/button', href: category_path('socks'), classes: 'cta' do %>
+      <h3><%= letterize('would you like to take a look?') %> &#8658;</h3>
+    <% end %>
+
+    <%= render 'shared/instagram_button' %>
+  </div>
+<% end %>

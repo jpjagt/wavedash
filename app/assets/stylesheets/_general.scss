@@ -107,6 +107,11 @@ a {
   }
 }
 
+ul, ol {
+  margin: 0;
+  padding-left: 1rem;
+}
+
 .wavedash {
   font-family: 'Cardo', serif;
 }
@@ -143,10 +148,6 @@ div {
   margin: 0;
 }
 
-.d-none {
-  display: none;
-}
-
 .float-left {
   float: left;
 }
@@ -170,7 +171,13 @@ div {
   text-decoration: underline;
 }
 
+@include util-classes("d", "display", block inline-block inline none flex);
+
 @include util-classes("t", "text-align", left center right justify);
+@include util-classes("t", "text-decoration", underline);
+
+@include util-classes("w", "width", (0 0%) (50 50%) (100 100%));
+@include util-classes("h", "height", (0 0%) (50 50%) (100 100%));
 
 .white { color: $white; }
 .bg-white { background: $white; }

@@ -1,0 +1,50 @@
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+@include util-classes("direction", "flex-direction", column row);
+
+@include util-classes("justify", "justify-content",
+  (between space-between)
+  (around space-around)
+  (evenly space-evenly)
+  (end flex-end)
+  (start flex-start)
+  (center center)
+);
+
+@include util-classes("align", "align-items",
+  (end flex-end)
+  (start flex-start)
+  (center center)
+  (stretch stretch)
+);
+
+@include util-classes("flex", "flex-wrap",
+  wrap
+  nowrap
+);
+
+// item classes
+
+@include util-classes("basis", "flex-basis",
+  auto
+  (50 50%)
+  (100 100%)
+  0
+);
+
+.item-grow {
+  flex-grow: 1;
+}
+
+.justify-self-start {
+  justify-self: flex-start;
+}
+.justify-self-end {
+  justify-self: flex-end;
+}

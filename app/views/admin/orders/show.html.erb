@@ -5,7 +5,7 @@
     <% if @order.paid? %>
       <div class="stamp">
         <span>set status:</span>
-        <%= simple_form_for @order, url: admin_orders_status_path,
+        <%= simple_form_for @order, url: admin_orders_statstory_path,
             html: { style: 'display: inline-block' },
             remote: true, authenticity_token: true do |form| %>
           <%= form.association :status,

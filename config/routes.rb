@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   get 'label', to: 'pages#label'
   get 'contact', to: 'pages#contact'
-  get 'us', to: 'pages#us'
-  get 'about', to: redirect('us', status: 302)
+  get 'story', to: 'pages#story'
+  get 'about', to: redirect('story', status: 302)
 
   # cart
   get 'cart', to: 'pages#cart', as: :cart
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'facade_api', to: 'pages#facade_api'
   get 'login', to: 'pages#login'
 
+  get '/socks', to: 'categories#socks'
   get '/:name', to: 'categories#show', as: :category
   get '/:category_name/:slug', to: 'garments#show', as: :garment
   post '/garments/:slug/add', to: 'garments#add', as: :add_garment
