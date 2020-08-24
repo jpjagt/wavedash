@@ -6,16 +6,18 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
-gem 'rails', '5.2.1'
+gem 'rails', '6.0.3.2'
 gem 'redis'
+gem 'sprockets', '< 4.0.0'
 
 gem 'autoprefixer-rails'
+gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sass-rails'
-gem 'font-awesome-sass', '~> 5.0.9'
+gem 'uglifier'
+gem 'webpacker'
+
 gem 'simple_form'
 gem 'country_select'
-gem 'uglifier'
-gem 'webpacker', '~> 3.5'
 
 gem 'turbolinks', '~> 5.2.0'
 

@@ -2,17 +2,12 @@
 @import "@getbase/base/scss/index";
 @import "@getbase/base/scss/core";
 
-// Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/variables";
-@import "config/breakpoints";
+@import "config/index";
 
 // External libraries
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "@getbase/base/scss/containers";
-@import "@getbase/base/scss/grid";
+// @import "font-awesome";
+// @import "@getbase/base/scss/containers";
+// @import "@getbase/base/scss/grid";
 
 // Your CSS partials
 @import "general";
