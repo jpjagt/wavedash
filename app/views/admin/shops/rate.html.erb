@@ -30,22 +30,24 @@
   <% end %>
 
   <% if false %>
-    <% gmaps['photos'].each do |photo| %>
+    <% [gmaps['photos'] || []].each do |photo| %>
       <% src = "https://maps.googleapis.com/maps/api/place/photo?key=#{ENV['GMAPS_KEY']}&photoreference=#{photo['photo_reference']}" %>
       <%= image_tag src %>
     <% end %>
   <% end %>
 
-  <h3 class="mb-1">reviews</h3>
-  <div class="row">
-    <% gmaps['reviews'].each do |review| %>
-      <div class="col-12 col-6-m col-4-l p-0_5">
-        <div class="card p-2">
-          <p><strong>rating: <%= review['rating'] %></strong></p>
-          <p><%= time_ago_in_words(review['time']) %> ago by <%= review['author_name'] %></p>
-          <p><%= review['text'] %></p>
+  <% if gmaps.key?('reviews') %>
+    <h3 class="mb-1">reviews</h3>
+    <div class="row">
+      <% gmaps['reviews'].each do |review| %>
+        <div class="col-12 col-6-m col-4-l p-0_5">
+          <div class="card p-2">
+            <p><strong>rating: <%= review['rating'] %></strong></p>
+            <p><%= time_ago_in_words(review['time']) %> ago by <%= review['author_name'] %></p>
+            <p><%= review['text'] %></p>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
