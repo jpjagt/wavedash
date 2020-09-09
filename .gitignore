@@ -13,6 +13,7 @@ node_modules
 yarn-error.log
 .byebug_history
 storage/*
+notebooks/*
 
 # Ignore application configuration
 /config/application.yml
