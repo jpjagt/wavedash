@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   # skip_before_action :redirect_to_root, only: [:home, :facade, :facade_api, :login]
-  # http_basic_authenticate_with name: "jeroen", password: "gridwave", only: [:login]
+  http_basic_authenticate_with name: "jeroen", password: "gridwave", only: [:login]
 
   def home
     @categories = Category.all

@@ -1,4 +1,5 @@
 $red: #ff0000;
+$green: #00cc00;
 
 $pink-dark: #E95873;
 $pink: #ffd5dd;
@@ -33,6 +34,7 @@ $colors: (
   darkgrey: $darkgrey,
   basalt: $basalt,
   red: $red,
+  green: $green,
 );
 
 @function bg($color) {

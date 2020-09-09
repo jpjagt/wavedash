@@ -7,7 +7,13 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
     resources :orders_statuses, only: [:update]
 
-    root to: 'admin#home'
+    resources :shops, only: [] do
+      get :route_rate, on: :collection
+      get :rate, on: :member
+      get :update_rating, on: :member
+    end
+
+    root to: 'admin#home', as: :root
   end
 
   get 'label', to: 'pages#label'

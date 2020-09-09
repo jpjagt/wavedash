@@ -3,6 +3,7 @@
 
   <p class="navbar-right">
     <% if in_admin_view? %>
+      <%= line_to 'waverate', route_rate_admin_shops_path %> |
       <% %w[orders garments].each do |page| %>
         <% path = send("admin_#{page}_path") %>
         <%= line_to page, path, class: cp(path) %> |

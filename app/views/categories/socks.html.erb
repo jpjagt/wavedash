@@ -13,7 +13,7 @@
       <%= render 'shared/button', classes: 'button-lavender-blue d-inline-block mt-2', text: 'or else, read what we are about (=', href: story_path %>
     <% else %>
       <div class="item-grow d-flex direction-row">
-        <%= render 'shared/button', classes: 'button-white item-grow basis-0', href: get_garment_path(@pink) do %>
+        <%= render 'shared/button', classes: 'button-pink item-grow basis-0', href: get_garment_path(@pink) do %>
           <div class="d-flex direction-column h-100 w-100 align-stretch">
             <div class="pb-0_5">
               <h4><%= letterize('televeyeze pink') %></h4>
@@ -24,7 +24,7 @@
           </div>
         <% end %>
 
-        <%= render 'shared/button', classes: 'button-white item-grow basis-0', href: get_garment_path(@blue) do %>
+        <%= render 'shared/button', classes: 'button-blue item-grow basis-0', href: get_garment_path(@blue) do %>
           <div class="d-flex direction-column h-100 w-100 align-stretch">
             <div class="pb-0_5">
               <h4><%= letterize('televeyeze blue') %></h4>

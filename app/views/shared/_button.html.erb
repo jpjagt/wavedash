@@ -1,4 +1,8 @@
-<% classes ||= "" %>
+<%
+classes ||= ""
+only_wrapper ||= false
+yielded = yield
+%>
 <div class="button-wrapper <%= classes %>">
   <svg xmlns="http://www.w3.org/2000/svg" class="button-svg-rect">
     <rect width="100%" x="0px" y="0px"></rect>
@@ -7,9 +11,13 @@
   <%= render 'svg/plus', classes: 'top-left' %>
   <%= render 'svg/plus', classes: 'bottom-right' %>
 
-  <% if block_given? && !yield.blank? %>
-    <%= link_to href, class: 'button' do %>
-      <%= yield %>
+  <% if block_given? && !yielded.blank? %>
+    <% if only_wrapper %>
+      <%= yielded %>
+    <% else %>
+      <%= link_to href, class: 'button' do %>
+        <%= yielded %>
+      <% end %>
     <% end %>
   <% else %>
     <%= link_to href, class: 'button' do %>

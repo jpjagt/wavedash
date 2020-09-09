@@ -1,30 +1,39 @@
-<% content_for(:title) do %><%= @garment.name %> ~ <%= @garment.category.name %><% end %>
+<% content_for(:title) do %><%= @garment.name %><% end %>
 
-<div class="garment-container container full-height">
-  <div class="flex full-height flex-column">
-    <div class="header" style="padding-top: 40px">
-      <div class="col-12 col-sm-6" style="margin-bottom: 16px; padding-right: 16px">
-        <h1 class="no-margin"><%= @garment.name %></h1>
+<div
+  data-controller="show-garment"
+  data-action="
+    turbolinks:load@window->show-garment#padHeader
+  "
+>
+  <div class="garment-thumbnail bg" style="background-image: url(<%= url_for @garment.thumbnail %>)" data-target="show-garment.thumbnail">
+  </div>
+
+  <div class="garment-header" data-target="show-garment.header">
+    <div class="garment-name">
+      <h1><%= @garment.name %></h1>
+    </div>
+
+    <div class="garment-header-body">
+      <div class="garment-info">
         <p><%= @garment.description %></p>
+        <div class="price">
+          <h3><%= currency(@garment.price) %></h3>
+        </div>
+
+        <p>free shipping <span class="grey"><em>*airplane noises*</em></span></p>
       </div>
-      <div class="col-12 col-sm-6" style="margin-bottom: 16px">
-        <%= render 'garments/pricetag', garment: @garment %>
-      </div>
+
+      <%= render 'garments/pricetag', garment: @garment %>
     </div>
+  </div>
 
-    <div class="images">
-      <div class="scroll scroll-left">
-        <span>&nbsp;&#x2304; scroll <%= ("&#x2304; " * 40).html_safe %></span>
-      </div>
-
-      <% @garment.images.each do |image| %>
-        <%= image_tag image, width: 'auto', height: '100%' %>
+  <div class="garment-images" data-target="show-garment.images">
+    <% @garment.images.each_with_index do |image, index| %>
+      <% if index == 1 %>
+        <div class="garment-images-spacer"></div>
       <% end %>
-
-      <div class="scroll scroll-right">
-        <span>&nbsp;&#x2304; scroll <%= ("&#x2304; " * 40).html_safe %></span>
-      </div>
-    </div>
-
+      <%= image_tag image %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,51 @@
+<% gmaps = @shop.gmaps_data %>
+
+<div class="navbar-spacer"></div>
+<div class="p-2 bg-white">
+  <div class="d-flex align-stretch">
+    <div class="item-grow mb-2">
+      <p class="mb-0_5"><%= line_to '&lt; back to wavedashboard'.html_safe, admin_root_path %> ~ <em>waverate v1.0</em></p>
+      <% if @shop.selection_rating_positive? %>
+        <p class="bg-green d-inline-block mb-0_5 px-1">this shop has already been selected, but you can revote.</p>
+      <% elsif @shop.selection_rating_negative? %>
+        <p class="bg-red d-inline-block mb-0_5 px-1">this shop has already been rejected, but you can revote.</p>
+      <% end %>
+      <h1><%= @shop.name %></h1>
+      <h4 class="mb-1">rating: <%= gmaps['rating'] %> (<%= gmaps['user_ratings_total'] %> ratings)</h4>
+      <p><%= gmaps['formatted_address'] %></p>
+      <p><%= link_to 'on google maps', gmaps['url'], target: :_blank, class: 'line' %></p>
+    </div>
+
+    <div class="d-flex direction-column align-stretch">
+      <p class="mb-0_5">should we contact this shop?</p>
+      <%= render 'shared/button', href: update_rating_admin_shop_path(@shop, selection_rating: 'positive'), text: '[+] select this shop', classes: 'button-green mb-0_5' %>
+      <%= render 'shared/button', href: update_rating_admin_shop_path(@shop, selection_rating: 'negative'), text: '[-] reject this shop', classes: 'button-red' %>
+    </div>
+  </div>
+  <% if gmaps['website'] %>
+    <h3><%= link_to 'website', gmaps['website'], target: :_blank, class: 'href' %></h3>
+    <div class="iframe-wrapper mb-2">
+      <iframe src="<%= gmaps['website'] %>" title="description"></iframe>
+    </div>
+  <% end %>
+
+  <% if false %>
+    <% gmaps['photos'].each do |photo| %>
+      <% src = "https://maps.googleapis.com/maps/api/place/photo?key=#{ENV['GMAPS_KEY']}&photoreference=#{photo['photo_reference']}" %>
+      <%= image_tag src %>
+    <% end %>
+  <% end %>
+
+  <h3 class="mb-1">reviews</h3>
+  <div class="row">
+    <% gmaps['reviews'].each do |review| %>
+      <div class="col-12 col-6-m col-4-l p-0_5">
+        <div class="card p-2">
+          <p><strong>rating: <%= review['rating'] %></strong></p>
+          <p><%= time_ago_in_words(review['time']) %> ago by <%= review['author_name'] %></p>
+          <p><%= review['text'] %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

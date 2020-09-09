@@ -10,11 +10,7 @@
     %>
   <% end %>
 
-  <div class="price">
-    <h3><%= currency(garment.price) %></h3>
-  </div>
-
-  <%= link_to "add to cart", "#", class: 'button add-to-cart', data: { target: "pricetag.button", action: "click->pricetag#add" } %>
-
-  <p class="clear-both">free shipping <span class="grey"><em>*airplane noises*</em></span></p>
+  <%= render 'shared/button', only_wrapper: true do %>
+    <%= link_to "add to cart", "#", class: 'button button-pink w-100 add-to-cart', data: { target: "pricetag.button", action: "click->pricetag#add" } %>
+  <% end %>
 </div>

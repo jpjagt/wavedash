@@ -10,6 +10,7 @@
       <% %w[orders garments].each do |action| %>
         <li><%= line_to "view #{action}", send("admin_#{action}_path") %></li>
       <% end %>
+      <li><%= line_to "rate shops", "#" %></li>
     </ul>
   <% end %>
 </div>

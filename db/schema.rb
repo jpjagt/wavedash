@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_173423) do
+ActiveRecord::Schema.define(version: 2020_09_07_064011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 2020_08_24_173423) do
     t.datetime "paid_at"
     t.bigint "status_id"
     t.index ["status_id"], name: "index_orders_on_status_id"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.integer "selection_rating", default: 0
+    t.string "name"
+    t.json "gmaps_data", default: {}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["selection_rating"], name: "index_shops_on_selection_rating"
   end
 
   create_table "statuses", force: :cascade do |t|
