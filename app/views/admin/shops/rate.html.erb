@@ -1,10 +1,12 @@
 <% gmaps = @shop.gmaps_data %>
+<% rated = Shop.where.not(selection_rating: 'none').count %>
+<% total = Shop.all.count %>
 
 <div class="navbar-spacer"></div>
 <div class="p-2 bg-white">
   <div class="d-flex align-stretch">
     <div class="item-grow mb-2">
-      <p class="mb-0_5"><%= line_to '&lt; back to wavedashboard'.html_safe, admin_root_path %> ~ <em>waverate v1.0</em></p>
+      <p class="mb-0_5"><%= line_to '&lt; back to wavedashboard'.html_safe, admin_root_path %> ~ <em>waverate v1.0 : : <%= rated %>/<%= total %> (<%= (rated.to_f / total * 100).round(1) %>%) shops processed</em></p>
       <% if @shop.selection_rating_positive? %>
         <p class="bg-green d-inline-block mb-0_5 px-1">this shop has already been selected, but you can revote.</p>
       <% elsif @shop.selection_rating_negative? %>
