@@ -1,6 +1,15 @@
-<% gmaps = @shop.gmaps_data %>
-<% rated = Shop.where.not(selection_rating: 'none').count %>
-<% total = Shop.all.count %>
+<%
+gmaps = @shop.gmaps_data
+if gmaps.key?('website')
+  website = URI.parse(gmaps['website'])
+  website.scheme = "https"
+  website.to_s
+else
+  website = nil
+end
+
+rated = Shop.where.not(selection_rating: 'none').count
+total = Shop.all.count %>
 
 <div class="navbar-spacer"></div>
 <div class="p-2 bg-white">
@@ -24,10 +33,10 @@
       <%= render 'shared/button', href: update_rating_admin_shop_path(@shop, selection_rating: 'negative'), text: '[-] reject this shop', classes: 'button-red' %>
     </div>
   </div>
-  <% if gmaps['website'] %>
-    <h3><%= link_to 'website', gmaps['website'], target: :_blank, class: 'href' %></h3>
+  <% if website %>
+    <h3><%= link_to 'website', website, target: :_blank, class: 'href' %></h3>
     <div class="iframe-wrapper mb-2">
-      <iframe src="<%= gmaps['website'] %>" title="description"></iframe>
+      <iframe src="<%= website %>" title="description"></iframe>
     </div>
   <% end %>
 
