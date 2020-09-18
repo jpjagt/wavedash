@@ -4,7 +4,7 @@
   <div class="d-flex direction-column h-100">
     <h1 class="mb-1">our socks</h1>
 
-    <% if false %>
+    <% if Rails.env.production? %>
       <p style="max-width: 320px;">
         we are working very hard on getting our socks ready for you! but right now, we cannot show you anything just yet...<br />
         if you feel like staying tuned, you can follow our <%= line_to 'instagram', 'https://instagram.com/wavedashed', class: 'bg-blue' %>.<br />
