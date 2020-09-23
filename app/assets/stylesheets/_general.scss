@@ -185,6 +185,7 @@ div {
 @include util-classes("d", "display", block inline-block inline none flex);
 
 @include util-classes("t", "text-align", left center right justify);
+@include util-classes("lh", "line-height", 1);
 @include util-classes("t", "text-decoration", underline);
 
 @include util-classes("w", "width", (0 0%) (50 50%) (100 100%));

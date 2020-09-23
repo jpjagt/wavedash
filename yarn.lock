@@ -4007,6 +4007,10 @@ last-call-webpack-plugin@^2.1.2:
     lodash "^4.17.4"
     webpack-sources "^1.0.1"
 
+lax.js@jpjagt/lax.js#add-transform-fn:
+  version "1.2.5"
+  resolved "https://codeload.github.com/jpjagt/lax.js/tar.gz/e3a8c7f89b9ff667a75b740eafab7c522e78e539"
+
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"

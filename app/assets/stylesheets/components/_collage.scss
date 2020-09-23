@@ -96,3 +96,19 @@
     "instagram instagram instagram instagram instagram"
   ;
 }
+
+#tunnel-face-collage {
+  @include collage-children(top-left, top-center, top-right, center-left, center-center, center-right, bottom-left, bottom-center, bottom-right);
+
+  grid-template-areas:
+    "top-left top-center top-right"
+    "center-left center-center center-right"
+    "bottom-left bottom-right bottom-right"
+  ;
+
+  $tnl-collage-outer-size: 5fr;
+  $tnl-collage-inner-size: 2fr;
+  grid-template-columns: $tnl-collage-outer-size $tnl-collage-inner-size $tnl-collage-outer-size;
+  grid-template-rows: $tnl-collage-outer-size $tnl-collage-inner-size $tnl-collage-outer-size;
+
+}

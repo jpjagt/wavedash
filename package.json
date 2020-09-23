@@ -10,6 +10,7 @@
     "@getbase/base": "^5.2.0",
     "@rails/webpacker": "3.5",
     "jsbezier": "^0.9.5",
+    "lax.js": "jpjagt/lax.js#add-transform-fn",
     "mathjs": "^7.0.2",
     "stimulus": "^1.1.0",
     "stimulus-tabs": "^1.0.4"

@@ -1,0 +1,78 @@
+$tnl-height: 4000px;
+$tnl-size: 80vw;
+$tnl-size-half: $tnl-size / 2;
+
+#reference {
+  position: absolute;
+  bottom: 0;
+}
+
+.tunnel-scroller {
+  height: $tnl-height;
+  width: 100%;
+  background: white;
+  pointer-events: none;
+}
+.tunnel-scene {
+  width: $tnl-size;
+  height: $tnl-size;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  perspective: 900px;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+}
+
+.tunnel-structure {
+  width: $tnl-size;
+  height: $tnl-size;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ($tnl-size * 0.5);
+}
+
+$tnl-grid-size: 100vw / 7;
+$tnl-grid-girth: 2%;
+$tnl-grid-color: $pink;
+.tunnel-wall {
+  position: absolute;
+  width: $tnl-size;
+  height: $tnl-size;
+
+  border: 4px solid $tnl-grid-color;
+  background:
+    linear-gradient(90deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth),
+    linear-gradient(0deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth),
+    #fff;
+  background-size: $tnl-grid-size $tnl-grid-size, $tnl-grid-size $tnl-grid-size;
+}
+
+.tunnel-wall-top, .tunnel-wall-bottom {
+  height: $tnl-height * 2;
+  transform-origin: $tnl-size-half $tnl-size-half;
+}
+.tunnel-wall-left, .tunnel-wall-right {
+  width: $tnl-height * 2;
+  transform-origin: $tnl-size-half $tnl-size-half;
+}
+
+.tunnel-face {
+  pointer-events: all;
+}
+
+.tunnel-face        { transform: rotateY(  0deg) translateZ(-$tnl-size-half); }
+.tunnel-wall-right  { transform: rotateY(-90deg) translateZ(-$tnl-size-half); }
+.tunnel-wall-left   { transform: rotateY(-90deg) translateZ($tnl-size-half); }
+.tunnel-wall-top    { transform: rotateX( 90deg) translateZ($tnl-size-half); }
+.tunnel-wall-bottom { transform: rotateX( 90deg) translateZ(-$tnl-size-half); }
+
+.tunnel-tile {
+  background: white;
+  position: absolute;
+}
+
+$tnl-hole-radius: 6%;
+.tunnel-tile-hole {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%, 42% 58%, 58% 58%, 58% 42%, 42% 42%, 42% 58%, 0% 100%);
+}

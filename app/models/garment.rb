@@ -22,6 +22,10 @@ class Garment < ApplicationRecord
     slug
   end
 
+  def release_date
+    self.created_at.strftime('%Y %m %d')
+  end
+
   def self.find_by_slug(slug)
     self.find_by(name: slug.gsub(/-/, ' '))
   end

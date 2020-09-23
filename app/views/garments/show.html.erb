@@ -1,10 +1,67 @@
 <% content_for(:title) do %><%= @garment.name %><% end %>
 
+<div id="reference"></div>
+
+<div class="tunnel-scroller"></div>
 <div
   data-controller="show-garment"
   data-action="
-    turbolinks:load@window->show-garment#padHeader
+    turbolinks:load@window->show-garment#activateTunnel
   "
+  class="tunnel-scene"
+>
+  <div class="tunnel-structure lax" data-lax-preset="translateBackwards" data-target="show-garment.structure">
+    <div class="tunnel-wall tunnel-face">
+      <div class="collage p-0_5" id='tunnel-face-collage'>
+        <div class="top-left">
+          <p><%= @garment.name %></p>
+          <p>€ <%= @garment.price %></p>
+        </div>
+
+        <div class="top-center d-flex justify-end align-start">
+          <div class="writing-mode-vertical rotate-180 text-right">
+            <p class="lh-1">WVD#001</p>
+            <p class="lh-1"><%= @garment.release_date %></p>
+          </div>
+        </div>
+
+        <div class="top-right">
+          <%= image_tag 'https://images.unsplash.com/photo-1559143748-03aaaac48f22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&h=900&q=60' %>
+        </div>
+
+        <div class="center-center d-flex align-center justify-center">
+          <%= image_tag 'brand/logo@4x-black.png' %>
+        </div>
+
+        <div class="bottom-left">
+          <%= image_tag 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&h=1300&q=80' %>
+        </div>
+
+        <div class="bottom-right pl-0_5 d-flex justify-start align-end">
+          <div>
+            <p>designed by</p>
+            <h3>marina mora</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tunnel-wall tunnel-wall-right">
+    </div>
+    <div class="tunnel-wall tunnel-wall-left">
+    </div>
+    <div class="tunnel-wall tunnel-wall-top">
+    </div>
+    <div class="tunnel-wall tunnel-wall-bottom">
+    </div>
+
+    <div class="tunnel-tile" data-tile-origin="top left" data-tile-height="60" data-tile-width="40" data-tile-depth="1700"></div>
+    <div class="tunnel-tile" data-tile-origin="bottom right" data-tile-height="100" data-tile-width="40" data-tile-depth="1400"></div>
+    <div class="tunnel-tile" data-tile-origin="bottom left" data-tile-height="40" data-tile-width="100" data-tile-depth="2200"></div>
+  </div>
+</div>
+
+<div
 >
   <div class="garment-thumbnail bg" style="background-image: url(<%= url_for @garment.thumbnail %>)" data-target="show-garment.thumbnail">
   </div>
