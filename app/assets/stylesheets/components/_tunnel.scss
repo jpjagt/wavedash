@@ -1,9 +1,34 @@
-$tnl-height: 4000px;
-$tnl-size: 80vw;
-$tnl-size-half: $tnl-size / 2;
+////////////////////////////////////////
+// tunnel variables
+// [ all are prefixed with --tunnel- ]
+// name [default]
+////////////////////////////////////////
+// text [$black]
+// primary [$pink]
+// background [$white]
+// height [4000px]
+// size [400px]
+
+@function tunnel-var($name, $default) {
+  @return var(--tunnel-#{$name}, $default);
+}
+$tnl-text: tunnel-var(text, $black);
+$tnl-primary: tunnel-var(primary, $pink);
+$tnl-background: tunnel-var(background, $white);
+
+$tnl-height: tunnel-var(height, 4000px);
+$tnl-size: tunnel-var(size, 400px);
+$tnl-size-half: calc(#{$tnl-size} * 0.5);
+$tnl-size-half-neg: calc(#{$tnl-size} * -0.5);
+
+$tnl-grid-size: calc(#{$tnl-size} / 5);
+$tnl-grid-girth: 2%;
+$tnl-grid-color: $tnl-primary;
+
+$tnl-border: 4px solid $tnl-grid-color;
 
 #reference {
-  position: absolute;
+	position: absolute;
   bottom: 0;
 }
 
@@ -22,6 +47,10 @@ $tnl-size-half: $tnl-size / 2;
   perspective: 900px;
   transform: translateX(-50%) translateY(-50%);
   pointer-events: none;
+
+  * {
+    color: $tnl-text;
+  }
 }
 
 .tunnel-structure {
@@ -29,50 +58,138 @@ $tnl-size-half: $tnl-size / 2;
   height: $tnl-size;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ($tnl-size * 0.5);
+  transform: translateZ(#{$tnl-size-half});
 }
 
-$tnl-grid-size: 100vw / 7;
-$tnl-grid-girth: 2%;
-$tnl-grid-color: $pink;
+$tnl-wall-shadow-extent: 22%;
+$tnl-wall-shadow-opacity: 0.11;
+$tnl-wall-shadow-color: #001144;
+$tnl-gradient-shadow: linear-gradient(90deg, rgba($tnl-wall-shadow-color, $tnl-wall-shadow-opacity) 0%, rgba($tnl-wall-shadow-color,0) #{$tnl-wall-shadow-extent}, rgba($tnl-wall-shadow-color,0) #{100% - $tnl-wall-shadow-extent}, rgba($tnl-wall-shadow-color,$tnl-wall-shadow-opacity) 100%);
+$tnl-gradient-grid:
+  linear-gradient(90deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth),
+  linear-gradient(0deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth);
+
 .tunnel-wall {
   position: absolute;
   width: $tnl-size;
-  height: $tnl-size;
+  height: calc(#{$tnl-height} * 2);
+  transform-origin: $tnl-size-half $tnl-size-half;
 
-  border: 4px solid $tnl-grid-color;
+  border: $tnl-border;
   background:
-    linear-gradient(90deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth),
-    linear-gradient(0deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth),
-    #fff;
-  background-size: $tnl-grid-size $tnl-grid-size, $tnl-grid-size $tnl-grid-size;
-}
+    $tnl-gradient-shadow,
+    $tnl-gradient-grid,
+    $tnl-background;
+  background-size: 100% 100%, $tnl-grid-size 100%, 100% $tnl-grid-size;
 
-.tunnel-wall-top, .tunnel-wall-bottom {
-  height: $tnl-height * 2;
-  transform-origin: $tnl-size-half $tnl-size-half;
-}
-.tunnel-wall-left, .tunnel-wall-right {
-  width: $tnl-height * 2;
-  transform-origin: $tnl-size-half $tnl-size-half;
-}
+  &.tunnel-wall-noshadow {
+    background: $tnl-gradient-grid, $tnl-background;
+    background-size: $tnl-grid-size 100%, 100% $tnl-grid-size;
+  }
 
-.tunnel-face {
   pointer-events: all;
 }
 
-.tunnel-face        { transform: rotateY(  0deg) translateZ(-$tnl-size-half); }
-.tunnel-wall-right  { transform: rotateY(-90deg) translateZ(-$tnl-size-half); }
-.tunnel-wall-left   { transform: rotateY(-90deg) translateZ($tnl-size-half); }
-.tunnel-wall-top    { transform: rotateX( 90deg) translateZ($tnl-size-half); }
-.tunnel-wall-bottom { transform: rotateX( 90deg) translateZ(-$tnl-size-half); }
+.tunnel-wall-top, .tunnel-wall-bottom {
+  /* background: linear-gradient(0deg, $pink 0%, $blue 100%); */
+}
+.tunnel-wall-left, .tunnel-wall-right {
+  /* background: linear-gradient(90deg, $pink 0%, $blue 100%); */
+}
 
+.tunnel-face {
+  @extend .tunnel-wall-noshadow;
+  height: $tnl-size;
+}
+
+.tunnel-face        { transform: rotateY(  0deg) translateZ($tnl-size-half-neg); }
+.tunnel-wall-right  { transform: rotateY(-90deg) rotateZ(-90deg) translateZ($tnl-size-half-neg); }
+.tunnel-wall-left   { transform: rotateY(90deg) rotateZ(90deg) translateZ($tnl-size-half-neg); }
+.tunnel-wall-top    { transform: rotateX(90deg) rotateY(180deg) translateZ($tnl-size-half-neg); }
+.tunnel-wall-bottom { transform: rotateX( 90deg) translateZ($tnl-size-half-neg); }
+
+.tunnel-graffiti {
+	transform: scaleY(400%);
+	transform-origin: top center;
+}
+
+.tunnel-header-text {
+	position: absolute;
+	top: 3rem;
+	overflow-x: visible;
+	white-space: nowrap;
+  right: 0;
+  transform: translateX(50%);
+}
+.tunnel-wall-right .tunnel-header-text {
+  right: 103%;
+}
+.tunnel-wall-top .tunnel-header-text {
+  right: 206%;
+}
+.tunnel-wall-left .tunnel-header-text {
+  right: 309%;
+}
+
+$tnl-tile-enlarge-duration: 660ms;
 .tunnel-tile {
   background: white;
   position: absolute;
+
+  pointer-events: all;
+  cursor: zoom-in;
+
+  background: $tnl-grid-color;
+  padding: 4px;
+
+  transition: width, height;
+  transition-duration: $tnl-tile-enlarge-duration / 4;
+  transition-delay: $tnl-tile-enlarge-duration / 3;
+  transition-timing-function: $easeInOutQuint;
+
+  &.enlarged {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: zoom-out;
+
+    img {
+      animation: clip-flashby forwards $tnl-tile-enlarge-duration;
+    }
+  }
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+
+    animation: clip-flashby-backwards forwards $tnl-tile-enlarge-duration;
+  }
 }
 
 $tnl-hole-radius: 6%;
 .tunnel-tile-hole {
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%, 42% 58%, 58% 58%, 58% 42%, 42% 42%, 42% 58%, 0% 100%);
+}
+
+.tunnel-logo svg, .tunnel-logo .cls-1 {
+  stroke: $tnl-primary !important;
+}
+
+.tunnel-end-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+
+  background: white;
+  padding: 2rem;
+
+  opacity: 0;
 }

@@ -21,13 +21,25 @@ categories.each do |category|
   Category.create!(category) unless Category.exists?(name: category[:name])
 end
 
+artists = [
+  {
+    name: 'marina mora',
+    instagram: 'marinamora98'
+  }
+]
+
+artists.each do |artist|
+  Artist.create!(artist) unless Artist.exists?(name: artist[:name])
+end
+
 garments = [
   {
     name: 'televeyeze pink',
     description: 'our first sock, in pink',
     euros: 9,
     cents: 99,
-    category_id: Category.find_by_name('socks').id
+    category_id: Category.find_by_name('socks').id,
+    artist_id: Artist.find_by_name('Marina Mora').id
   },
   {
     name: 'televeyeze blue',
@@ -35,6 +47,7 @@ garments = [
     euros: 9,
     cents: 99,
     category_id: Category.find_by_name('socks').id
+    artist_id: Artist.find_by_name('Marina Mora').id
   }
 ]
 

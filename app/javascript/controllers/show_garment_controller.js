@@ -1,16 +1,22 @@
 import { Controller } from "stimulus"
-import { activateTunnel } from '../tunnel'
+import { deactivateTunnel, activateTunnel } from '../tunnel'
 
 export default class extends Controller {
   static targets = [ "thumbnail", "header", "images", "structure" ]
 
-  padHeader () {
-    const padding = `${this.headerTarget.offsetHeight}px`
-    this.thumbnailTarget.style.marginBottom = padding
-    this.imagesTarget.style.paddingBottom = padding
+  connect () {
+  	this.activateTunnel()
+  }
+
+  disconnect () {
+  	this.deactivateTunnel()
   }
 
   activateTunnel () {
     activateTunnel()
+  }
+
+  deactivateTunnel () {
+    deactivateTunnel()
   }
 }

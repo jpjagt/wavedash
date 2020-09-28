@@ -1,0 +1,54 @@
+/*
+Error: Undefined variable: "$pink".
+        on line 37 of /Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss
+
+32:   transform: translateZ($tnl-size * 0.5);
+33: }
+34: 
+35: $tnl-grid-size: 100vw / 7;
+36: $tnl-grid-girth: 2%;
+37: $tnl-grid-color: $pink;
+38: .tunnel-wall {
+39:   position: absolute;
+40:   width: $tnl-size;
+41:   height: $tnl-size;
+42: 
+
+Backtrace:
+/Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss:37
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/variable.rb:49:in `_perform'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:478:in `visit_variable'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/stack.rb:79:in `block in with_base'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/stack.rb:135:in `with_frame'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/stack.rb:79:in `with_base'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/exec/sass_scss.rb:387:in `run'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/exec/base.rb:50:in `parse'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/exec/base.rb:18:in `parse!'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/bin/sass:13:in `<top (required)>'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/bin/sass:23:in `load'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$pink\".\A         on line 37 of /Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss\A \A 32:   transform: translateZ($tnl-size * 0.5);\A 33: }\A 34: \A 35: $tnl-grid-size: 100vw / 7;\A 36: $tnl-grid-girth: 2%;\A 37: $tnl-grid-color: $pink;\A 38: .tunnel-wall {\A 39:   position: absolute;\A 40:   width: $tnl-size;\A 41:   height: $tnl-size;\A 42: "; }

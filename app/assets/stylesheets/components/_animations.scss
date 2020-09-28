@@ -1,0 +1,96 @@
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes keep-hidden {
+  0% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes clip-in {
+  0% {
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+  }
+
+  100% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+  }
+}
+
+@keyframes clip-out {
+  0% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+  }
+
+  100% {
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+  }
+}
+
+@keyframes clip-in-out {
+  0% {
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+  }
+
+  50% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+  }
+
+  100% {
+    clip-path: polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%);
+  }
+}
+
+@keyframes clip-flashby {
+  0% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+  }
+
+  35% {
+    clip-path: polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%);
+    display: none;
+  }
+
+  65% {
+    display: none;
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+  }
+
+  100% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+  }
+}
+
+@keyframes clip-flashby-backwards {
+  100% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+  }
+
+  65% {
+    clip-path: polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%);
+    display: none;
+  }
+
+  35% {
+    display: none;
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+  }
+
+  0% {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+  }
+}

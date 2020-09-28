@@ -220,8 +220,8 @@
               }
           })
 
-          const currentAnchor = el.getAttribute("data-lax-anchor")
-          if(!currentAnchor || currentAnchor === "") el.setAttribute("data-lax-anchor", "self")
+          // const currentAnchor = el.getAttribute("data-lax-anchor")
+          // if(!currentAnchor || currentAnchor === "") el.setAttribute("data-lax-anchor", "self")
           el.attributes.removeNamedItem(a.name)
 
       }

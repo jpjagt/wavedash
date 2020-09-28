@@ -15,6 +15,6 @@ class Admin::GarmentImagesController < Admin::BaseController
   private
 
   def set_garment
-    @garment = Garment.find(params[:garment_id])
+    @garment = Garment.find_by_slug(params[:garment_id])
   end
 end
