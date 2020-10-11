@@ -21,14 +21,16 @@ $tnl-size: tunnel-var(size, 400px);
 $tnl-size-half: calc(#{$tnl-size} * 0.5);
 $tnl-size-half-neg: calc(#{$tnl-size} * -0.5);
 
-$tnl-grid-size: calc(#{$tnl-size} / 5);
-$tnl-grid-girth: 2%;
+$tnl-grid-girth: 2px;
+$tnl-grid-size: calc(#{$tnl-size} / 5 - 0.5 * #{$tnl-grid-girth});
 $tnl-grid-color: $tnl-primary;
 
 $tnl-border: 4px solid $tnl-grid-color;
 
+$tnl-scan-height: 120px;
+
 #reference {
-	position: absolute;
+  position: absolute;
   bottom: 0;
 }
 
@@ -59,6 +61,8 @@ $tnl-border: 4px solid $tnl-grid-color;
   position: relative;
   transform-style: preserve-3d;
   transform: translateZ(#{$tnl-size-half});
+
+  will-change: transform;
 }
 
 $tnl-wall-shadow-extent: 22%;
@@ -66,10 +70,13 @@ $tnl-wall-shadow-opacity: 0.11;
 $tnl-wall-shadow-color: #001144;
 $tnl-gradient-shadow: linear-gradient(90deg, rgba($tnl-wall-shadow-color, $tnl-wall-shadow-opacity) 0%, rgba($tnl-wall-shadow-color,0) #{$tnl-wall-shadow-extent}, rgba($tnl-wall-shadow-color,0) #{100% - $tnl-wall-shadow-extent}, rgba($tnl-wall-shadow-color,$tnl-wall-shadow-opacity) 100%);
 $tnl-gradient-grid:
-  linear-gradient(90deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth),
-  linear-gradient(0deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth);
+linear-gradient(90deg, $tnl-grid-color $tnl-grid-girth, transparent calc(100% - #{$tnl-grid-girth})),
+                linear-gradient(0deg, $tnl-grid-color $tnl-grid-girth, transparent calc(100% - #{$tnl-grid-girth}));
+$tnl-gradient-grid:
+linear-gradient(90deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth),
+                linear-gradient(0deg, $tnl-grid-color $tnl-grid-girth, transparent $tnl-grid-girth);
 
-.tunnel-wall {
+.tunnel-side {
   position: absolute;
   width: $tnl-size;
   height: calc(#{$tnl-height} * 2);
@@ -82,7 +89,7 @@ $tnl-gradient-grid:
     $tnl-background;
   background-size: 100% 100%, $tnl-grid-size 100%, 100% $tnl-grid-size;
 
-  &.tunnel-wall-noshadow {
+  &.tunnel-side-noshadow {
     background: $tnl-gradient-grid, $tnl-background;
     background-size: $tnl-grid-size 100%, 100% $tnl-grid-size;
   }
@@ -98,7 +105,7 @@ $tnl-gradient-grid:
 }
 
 .tunnel-face {
-  @extend .tunnel-wall-noshadow;
+  @extend .tunnel-side-noshadow;
   height: $tnl-size;
 }
 
@@ -108,18 +115,52 @@ $tnl-gradient-grid:
 .tunnel-wall-top    { transform: rotateX(90deg) rotateY(180deg) translateZ($tnl-size-half-neg); }
 .tunnel-wall-bottom { transform: rotateX( 90deg) translateZ($tnl-size-half-neg); }
 
+@keyframes scan {
+  0% {
+    top: -$tnl-scan-height;
+  }
+  15% {
+    top: 100%;
+    display: none;
+  }
+  100% {
+    top: 100%;
+    display: none;
+  }
+}
+
+.tunnel-wall:after {
+  content: '';
+  position: absolute;
+  top: -$tnl-scan-height;
+  left: 0;
+  right: 0;
+  height: $tnl-scan-height;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba($white,0.2) 100%);
+  border-bottom: 3px solid $tnl-primary;
+
+  animation: scan 30000ms 2000ms infinite $easeInOutQuad;
+}
+
 .tunnel-graffiti {
-	transform: scaleY(400%);
-	transform-origin: top center;
+  transform: scaleY(4) translateY(-10px);
+  transform-origin: top center;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
 }
 
 .tunnel-header-text {
-	position: absolute;
-	top: 3rem;
-	overflow-x: visible;
-	white-space: nowrap;
+  position: absolute;
+  top: 3rem;
+  overflow-x: visible;
+  white-space: nowrap;
   right: 0;
   transform: translateX(50%);
+
+  .lax {
+    will-change: transform;
+  }
 }
 .tunnel-wall-right .tunnel-header-text {
   right: 103%;
@@ -178,6 +219,10 @@ $tnl-hole-radius: 6%;
 
 .tunnel-logo svg, .tunnel-logo .cls-1 {
   stroke: $tnl-primary !important;
+}
+
+.tunnel-img-filtered {
+  filter: url(#tunnel-img-filter);
 }
 
 .tunnel-end-screen {

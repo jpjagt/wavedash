@@ -1,3 +1,4 @@
+# coding: utf-8
 module ApplicationHelper
   EMAIL = "hi@wavedash.club"
 
@@ -69,29 +70,5 @@ module ApplicationHelper
 
   def cart_count(count)
     count > 0 ? "(#{count})" : ""
-  end
-
-  def garment_hash(garment)
-    # --tunnel-primary: #ff0000; --tunnel-background: #441133; --tunnel-text: #fff;   
-    case garment.slug
-    when 'televeyeze-blue'
-      {
-        background: '#64d8fd',
-        primary: '#b6f5ff',
-      }
-    when 'televeyeze-pink'
-      {
-        primary: '#E95873',
-        # background: '#f2d4e7',
-        background: '#9c162d',
-        text: '#fff',
-      }
-    else
-      {}
-    end
-  end
-
-  def garment_style(garment)
-    garment_hash(garment).map { |k, v| %(--tunnel-#{k}: #{v}) }.join(';')
   end
 end

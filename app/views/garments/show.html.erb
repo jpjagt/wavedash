@@ -26,6 +26,25 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
 
 <div id="reference"></div>
 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="tunnel-img-filter">
+    <feColorMatrix type="matrix" result="grayscale"
+  values="1 0 0 0 0
+    1 0 0 0 0
+    1 0 0 0 0
+    0 0 0 1 0" >
+</feColorMatrix>
+<feComponentTransfer color-interpolation-filters="sRGB" result="duotone_navy_orange">
+  <% construct_svg_filter_rgb(@garment).each do |channel, values| %>
+    <%= content_tag "feFunc#{channel}", '', type: :table, tableValues: values.join(' ') %>
+  <% end %>
+  <feFuncA type="table" tableValues="0 1"></feFuncA>
+    </feComponentTransfer>
+</filter>
+  </defs>
+</svg>
+
 <div class="tunnel-scroller">
   <div class="tunnel-end-screen lax" data-lax-preset="tunnelEndScreen">
     <h3><%= @garment.name %></h3>
@@ -40,7 +59,7 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
   style: garment_style(@garment) do
 %>
   <div class="tunnel-structure lax" data-lax-preset="translateBackwards" data-target="show-garment.structure">
-    <div class="tunnel-wall tunnel-face">
+    <div class="tunnel-side tunnel-face">
       <div class="collage p-0_5" id='tunnel-face-collage'>
         <div class="top-left">
           <h3><%= @garment.name %></h3>
@@ -55,7 +74,7 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
         </div>
 
         <div class="top-right">
-          <%= image_tag 'https://images.unsplash.com/photo-1559143748-03aaaac48f22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&h=900&q=60' %>
+          <%= image_tag 'https://images.unsplash.com/photo-1559143748-03aaaac48f22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&h=900&q=60', class: 'tunnel-img-filtered' %>
         </div>
 
         <div class="center-left d-flex justify-start align-end">
@@ -69,7 +88,7 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
         </div>
 
         <div class="bottom-left">
-          <%= image_tag 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&h=1300&q=80' %>
+          <%= image_tag 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&h=1300&q=80', class: 'tunnel-img-filtered' %>
         </div>
 
         <div class="bottom-right pl-0_5 d-flex justify-start align-end">
@@ -82,7 +101,7 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
     </div>
 
     <% %w[right left top bottom].each do |side| %>
-      <div class="tunnel-wall tunnel-wall-<%= side %>">
+      <div class="tunnel-side tunnel-wall tunnel-wall-<%= side %>">
         <div class="tunnel-graffiti">
           <h3 class="tunnel-header-text">
             <span class="d-inline-block lax" data-lax-preset="tunnelHeader"><%= ([@garment.name] * 20).join('&nbsp;&nbsp;&nbsp;&nbsp;').html_safe %></span>
@@ -105,3 +124,16 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
   <p>free shipping <span class="grey"><em>*airplane noises*</em></span></p>
   <%= render 'garments/pricetag', garment: @garment %>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js" integrity="sha512-LfB+BcvR3zBt7ebVskhSWiSbEUiG3p5EcCprkieldsKhBeR6wpnLi0VpWC2GNgVGWP2n/skO8Bx2oKNjUhXCkw==" crossorigin="anonymous"></script>
+<script>
+document.querySelector('.top-left h3').addEventListener('click', () => {
+console.log('jfaisofj')
+  anime({
+  targets: '.tunnel-structure',
+  // translateZ: [0, -1300],
+  scrollTop: 1000,
+  easing: 'easeInOutQuad'
+});
+});
+</script>

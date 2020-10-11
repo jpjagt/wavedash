@@ -1,22 +1,30 @@
 /*
-Error: Undefined variable: "$pink".
-        on line 37 of /Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss
+Error: Undefined variable: "$black".
+        on line 15 of /Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss
 
-32:   transform: translateZ($tnl-size * 0.5);
-33: }
-34: 
-35: $tnl-grid-size: 100vw / 7;
-36: $tnl-grid-girth: 2%;
-37: $tnl-grid-color: $pink;
-38: .tunnel-wall {
-39:   position: absolute;
-40:   width: $tnl-size;
-41:   height: $tnl-size;
-42: 
+10: // size [400px]
+11: 
+12: @function tunnel-var($name, $default) {
+13:   @return var(--tunnel-#{$name}, $default);
+14: }
+15: $tnl-text: tunnel-var(text, $black);
+16: $tnl-primary: tunnel-var(primary, $pink);
+17: $tnl-background: tunnel-var(background, $white);
+18: 
+19: $tnl-height: tunnel-var(height, 4000px);
+20: $tnl-size: tunnel-var(size, 400px);
 
 Backtrace:
-/Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss:37
+/Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss:15
 /Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/variable.rb:49:in `_perform'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/funcall.rb:182:in `perform_arg'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/funcall.rb:129:in `block in _perform'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/funcall.rb:129:in `each'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/funcall.rb:129:in `each_with_index'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/funcall.rb:129:in `each'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/funcall.rb:129:in `map'
+/Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/funcall.rb:129:in `_perform'
 /Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/script/tree/node.rb:50:in `perform'
 /Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/perform.rb:478:in `visit_variable'
 /Users/jeroen/.rvm/gems/ruby-2.6.3/gems/sass-3.7.2/lib/sass/tree/visitors/base.rb:36:in `visit'
@@ -51,4 +59,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$pink\".\A         on line 37 of /Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss\A \A 32:   transform: translateZ($tnl-size * 0.5);\A 33: }\A 34: \A 35: $tnl-grid-size: 100vw / 7;\A 36: $tnl-grid-girth: 2%;\A 37: $tnl-grid-color: $pink;\A 38: .tunnel-wall {\A 39:   position: absolute;\A 40:   width: $tnl-size;\A 41:   height: $tnl-size;\A 42: "; }
+  content: "Error: Undefined variable: \"$black\".\A         on line 15 of /Users/jeroen/code/jpjagt/wavedash/app/assets/stylesheets/components/_tunnel.scss\A \A 10: // size [400px]\A 11: \A 12: @function tunnel-var($name, $default) {\A 13:   @return var(--tunnel-#{$name}, $default);\A 14: }\A 15: $tnl-text: tunnel-var(text, $black);\A 16: $tnl-primary: tunnel-var(primary, $pink);\A 17: $tnl-background: tunnel-var(background, $white);\A 18: \A 19: $tnl-height: tunnel-var(height, 4000px);\A 20: $tnl-size: tunnel-var(size, 400px);"; }
