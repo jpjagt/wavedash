@@ -52,11 +52,20 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
 </div>
 
 <%= content_tag :div,
-  data: {
-    controller: :'show-garment',
-  },
-  class: :'tunnel-scene',
-  style: garment_style(@garment) do
+      data: {
+        controller: :'show-garment',
+        :'show-garment-slug' => @garment.slug,
+        :'show-garment-aesthetica' => garment_hash(@garment),
+        :'show-garment-args' => {
+          images: {
+            artist: 'https://images.unsplash.com/photo-1559143748-03aaaac48f22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&h=300&q=60',
+            thumbnail: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&h=300&q=80',
+            productImages: @garment.images.map { |img| url_for(img) },
+          },
+        }
+      },
+   class: :'tunnel-scene',
+   style: garment_style(@garment) do
 %>
   <div class="tunnel-structure lax" data-lax-preset="translateBackwards" data-target="show-garment.structure">
     <div class="tunnel-side tunnel-face">
@@ -100,7 +109,7 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
       </div>
     </div>
 
-    <% %w[right left top bottom].each do |side| %>
+    <% %w[right left top bottom]; [].each do |side| %>
       <div class="tunnel-side tunnel-wall tunnel-wall-<%= side %>">
         <div class="tunnel-graffiti">
           <h3 class="tunnel-header-text">
@@ -118,22 +127,13 @@ image_tile_data = wides.map { |w| gen_image_tile_data(w) }
       <% end %>
     <% end %>
   </div>
-<% end %>
+  <% end %>
+
+  <div class="tunnel-canvas">
+
+  </div>
 
 <div>
   <p>free shipping <span class="grey"><em>*airplane noises*</em></span></p>
   <%= render 'garments/pricetag', garment: @garment %>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js" integrity="sha512-LfB+BcvR3zBt7ebVskhSWiSbEUiG3p5EcCprkieldsKhBeR6wpnLi0VpWC2GNgVGWP2n/skO8Bx2oKNjUhXCkw==" crossorigin="anonymous"></script>
-<script>
-document.querySelector('.top-left h3').addEventListener('click', () => {
-console.log('jfaisofj')
-  anime({
-  targets: '.tunnel-structure',
-  // translateZ: [0, -1300],
-  scrollTop: 1000,
-  easing: 'easeInOutQuad'
-});
-});
-</script>

@@ -4,8 +4,8 @@ import {
 	removeTiles
 } from './tiles'
 
-export const activateTunnel = () => {
-	tunnel.activate()
+export const activateTunnel = (bgHex, edgeHex) => {
+	tunnel.activate(bgHex, edgeHex)
 	addTiles()
 }
 

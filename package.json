@@ -9,11 +9,16 @@
   "dependencies": {
     "@getbase/base": "^5.2.0",
     "@rails/webpacker": "3.5",
+    "animejs": "^3.2.1",
     "jsbezier": "^0.9.5",
     "lax.js": "jpjagt/lax.js#add-transform-fn",
+    "lodash": "^4.17.20",
     "mathjs": "^7.0.2",
+    "rails-erb-loader": "^5.5.2",
     "stimulus": "^1.1.0",
-    "stimulus-tabs": "^1.0.4"
+    "stimulus-tabs": "^1.0.4",
+    "three": "^0.121.1",
+    "three.interaction": "^0.2.3"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

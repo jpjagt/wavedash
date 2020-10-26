@@ -18,5 +18,7 @@ module Wavedash
     config.assets.configure do |env|
       env.register_mime_type('application/manifest+json', extensions: ['.webmanifest'])
     end
+
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

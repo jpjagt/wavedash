@@ -40,6 +40,17 @@ $tnl-scan-height: 120px;
   background: white;
   pointer-events: none;
 }
+
+.tunnel-canvas canvas {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .tunnel-scene {
   width: $tnl-size;
   height: $tnl-size;
