@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rails', '6.0.3.2'
 gem 'redis'
 gem 'sprockets', '< 4.0.0'
+gem 'http-proxy', '~> 1.18.1'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
