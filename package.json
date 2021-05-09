@@ -12,7 +12,7 @@
     "animejs": "^3.2.1",
     "jsbezier": "^0.9.5",
     "lax.js": "jpjagt/lax.js#add-transform-fn",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "mathjs": "^7.0.2",
     "rails-erb-loader": "^5.5.2",
     "stimulus": "^1.1.0",
