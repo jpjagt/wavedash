@@ -13,7 +13,7 @@
     "jsbezier": "^0.9.5",
     "lax.js": "jpjagt/lax.js#add-transform-fn",
     "lodash": "^4.17.20",
-    "mathjs": "^7.0.2",
+    "mathjs": "^7.5.1",
     "rails-erb-loader": "^5.5.2",
     "stimulus": "^1.1.0",
     "stimulus-tabs": "^1.0.4",
